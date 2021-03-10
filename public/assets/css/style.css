@@ -1,0 +1,168 @@
+/* General Css */
+@import url("general.css");
+/* Header Css */
+@import url("header.css");
+
+/* Loader Css */
+@import url("loader.css");
+
+
+/* slider Css */
+.site-slider {
+  position: relative;
+}
+.position-top {
+  position: absolute;
+  top: 50%;
+}
+.site-slider .slider-one img {
+  width: 100%;
+  height: 550px;
+  object-fit: cover;
+}
+.site-slider .slider-btn .prev,
+.site-slider .slider-btn .next {
+  background-color: var(--secondary-color);
+  padding: 1em 1.5em;
+  border-radius: 10em;
+  color: white;
+  margin: 0 1em;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.site-slider:hover .slider-btn .prev,
+.site-slider:hover .slider-btn .next {
+  opacity: 1;
+}
+
+.right-0 {
+  right: 0;
+}
+
+/* Slick Dots */
+
+.slick-dots {
+  display: flex;
+  justify-content: center;
+  padding: 1.5em 0;
+  margin: 0;
+  list-style-type: none;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  left: 50%;
+}
+
+.slick-dots li {
+  margin: 0 0.6em;
+}
+
+.slick-dots button {
+  display: block;
+  width: 0.6rem;
+  height: 0.6rem;
+  padding: 0;
+  border: none !important;
+  background-color: var(--secondary-color);
+  text-indent: -99999px;
+  border-radius: 100%;
+}
+.slick-dots li.slick-active button {
+  transform: scale(1.5);
+}
+.slick-dots li button:focus {
+  outline: none !important;
+}
+/* ******** Services Section Started ************* */
+#services {
+  padding-top: 4em !important;
+}
+.services-title {
+  font-weight: 700;
+  color: var(--main-color);
+  font-style: italic;
+  text-align: center;
+}
+.align-ch{
+  align-self: stretch !important;
+}
+.services-div {
+  text-align: center;
+  background: #fff;
+  min-height: 320px;
+  border-left: 5px solid var(--secondary-color);
+  margin: 0 0 30px;
+  padding: 0 0.4em;
+  -webkit-box-shadow: 0 0 20px #ccc;
+  box-shadow: 0 0 20px #ccc;
+  transition: transform 0.7s ease, -webkit-transform 0.7s ease;
+}
+.services-div h4 {
+  color: var(--main-color);
+  font-size: 23px;
+}
+.services-div .services-tag {
+  color: var(--para-color);
+  font-size: 1rem;
+  margin-bottom: 0.8em;
+  letter-spacing: 1px;
+}
+.services-div .contact-us-link {
+  background: #f5f5f6;
+  color: #626262;
+}
+
+.contact-us-link {
+  padding: 0.5em 0.93em;
+  font-weight: 700;
+  display: inline-block;
+  font-size: 1rem;
+  vertical-align: bottom;
+  text-transform: uppercase;
+}
+.services-div .contact-us-link:hover,
+.services-div:hover .contact-us-link {
+  background: var(--secondary-color);
+  color: #fff;
+}
+.services-div:hover {
+  
+  cursor: pointer;
+  transform: translate3D(0, -12px, 0);
+}
+/* ******** Services Section Ended ************* */
+/* *********** Footer Started ******************** */
+.footer-wrap {
+  background: var(--main-color);
+  color: #fff;
+  border-top: 6px solid var(--secondary-color);
+}
+.footer-content {
+  padding: 2em 10px;
+  font-size: 1rem;
+}
+/* *********** Footer Ended ******************** */
+
+
+/* Login Page Css  */
+
+@media (max-width: 768px) {
+  .site-slider .slider-one img {
+    width: 100%;
+    max-height: 250px;
+  }
+  .main-menu li a {
+    margin-bottom: .6em;
+  }
+  .site-slider .slider-btn .prev,
+  .site-slider .slider-btn .next {
+    padding: 0.5em 1em;
+  }
+}
+@media (min-width: 767px) {
+  .site-slider .slider-one img {
+    width: 100%;
+    max-height: 550px;
+  }
+}
