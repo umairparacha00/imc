@@ -46,7 +46,20 @@
 				Route::post('/getUserDetailsForDestroying', 'UserController@getUserDetailsForDestroying');
 				Route::resource('users', 'UserController');
 			});
+			Route::prefix('memberships')->group(function () {
+				Route::get('pending', 'UserMembershipController@indexPending')->name('memberships.pending');
+				Route::put('{pending_memberships}/approve', 'UserMembershipController@approve')->name('memberships.approve');
+				Route::put('{pending_memberships}/reject', 'UserMembershipController@reject')->name('memberships.reject');
+			});
 			Route::resource('memberships', 'MembershipController');
+			Route::prefix('links')->group(function () {
+				Route::get('pending', 'LinkController@pending')->name('links.pending');
+				Route::put('{link}/approve', 'LinkController@approve')->name('links.approve');
+				Route::put('{link}/reject', 'LinkController@reject')->name('links.reject');
+			});
+			Route::resource('links', 'LinkController');
+			Route::resource('payment-gateways', 'PaymentGatewayController');
+			Route::post('/getLinkDetailsForDestroying', 'LinkController@getLinkDetailsForDestroying');
 			Route::post('/getMembershipDetailsForDestroying', 'MembershipController@getMembershipDetailsForDestroying');
 			Route::get('/users/documents', 'documentsApprovingController@show')->name('users.documents');
 			Route::put('/users/{user}/document/approve', 'documentsApprovingController@approve')->name('users.documents.approve');
@@ -58,10 +71,15 @@
 					Route::get('/{role}/assignPermission', 'RolesController@showAssignPermission')->name('roles.assignPermission.create');
 					Route::post('/assignPermission', 'RolesController@AssignPermission')->name('roles.assignPermission.post');
 				});
-				Route::prefix('rates')->group(function () {
-					Route::resource('rates', 'RatesController');
+				Route::resource('rates', 'RatesController');
+				Route::prefix('withdraws')->group(function () {
+					Route::get('/pending', 'WithdrawController@pending')->name('withdraws.pending');
+					Route::put('{withdraw}/approve', 'WithdrawController@approve')->name('withdraws.approve');
+					Route::put('{withdraw}/reject', 'WithdrawController@reject')->name('withdraws.reject');
 				});
+				Route::resource('withdraws', 'WithdrawController');
 				Route::post('/getRateDetailsForDestroying', 'RatesController@getRateDetailsForDestroying');
+				Route::post('/getGatewayDetailsForDestroying', 'RatesController@getGatewayDetailsForDestroying');
 				Route::post('/getRoleDetailsForDestroying', 'RolesController@getRoleDetailsForDestroying');
 				Route::post('/getPermissionDetailsForDestroying', 'PermissionsController@getPermissionDetailsForDestroying');
 				Route::resource('permissions', 'PermissionsController');
@@ -89,11 +107,29 @@
 		Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 		Route::get('/profile', 'ProfileController@edit')->name('profile');
 		Route::patch('/profile/{user}', 'ProfileController@update');
-		Route::get('/transactions', 'TransactionsController@index')->name('transactions');		Route::prefix('/network')->group(function () {
+		Route::get('/transactions', 'TransactionsController@index')->name('transactions');
+		Route::get('/withdraw', 'WithdrawController@create')->name('withdraw.create');
+		Route::post('/withdraw/{user}', 'WithdrawController@store')->name('withdraw.store');
+		Route::prefix('/network')->group(function () {
 			Route::get('/direct-referrals', 'NetworkController@directReferralsIndex');
 			Route::get('/referral-link', 'NetworkController@referralLinkShow');
 			Route::get('/tree', 'NetworkController@treeShow');
 			Route::post('/treeview', 'NetworkController@treeview');
+		});
+		Route::prefix('/youtube')->group(function () {
+			Route::get('/channels', 'YoutubeController@index')->name('youtube.channels.index');
+			Route::get('/channels/{link}', 'YoutubeController@show')->name('youtube.channels.show');
+			Route::post('/channel/{link}', 'YoutubeController@store')->name('youtube.channels.store');
+		});
+		Route::prefix('/facebook')->group(function () {
+			Route::get('/pages', 'FacebookController@index')->name('facebook.pages.index');
+			Route::get('/pages/{link}', 'FacebookController@show')->name('facebook.page.show');
+			Route::post('/page/{link}', 'FacebookController@store')->name('facebook.page.store');
+		});
+		Route::prefix('/instagram')->group(function () {
+			Route::get('/profiles', 'InstagramController@index')->name('instagram.profiles.index');
+			Route::get('/profiles/{link}', 'InstagramController@show')->name('instagram.profile.show');
+			Route::post('/profile/{link}', 'InstagramController@store')->name('instagram.profiles.store');
 		});
 		Route::prefix('/settings')->group(function () {
 			Route::get('/', 'SettingsController@create');
@@ -102,10 +138,9 @@
 		});
 		Route::prefix('purchase')->group(function () {
 			Route::get('/membership', 'MembershipController@create')->name('membership.create');
-			Route::post('/getAdPackValidation', 'AdPackPurchaseController@getAdPackValidation');
 			Route::post('/membership', 'MembershipController@store')->name('membership.post');
-			Route::post('/ad-pack', 'AdPackPurchaseController@store')->name('ad_packs.post');
 		});
+		Route::post('/getMembershipPrice', 'MembershipController@getMembershipPrice');
 		Route::any('{query}',
 			function () {
 				return redirect('/dashboard');

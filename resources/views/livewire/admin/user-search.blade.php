@@ -30,7 +30,6 @@
 						<th>Name</th>
 						<th class="text-center">Account ID</th>
 						<th class="text-center">User Name</th>
-						<th class="text-center">Member Ship</th>
 						<th class="text-center">Status</th>
 						@role('super-admin', 'admin')
 						<th class="text-center">Sponsor</th>
@@ -68,7 +67,6 @@
 							</td>
 							<td class="text-center text-muted">{{ $user->account_id }}</td>
 							<td class="text-center">{{ $user->username}}</td>
-							<td class="text-center">{{ $user->membership()->name}}</td>
 							<td class="text-center">
 								<div class="badge
 											@if ($user->status === 0)

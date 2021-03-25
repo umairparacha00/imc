@@ -133,42 +133,6 @@
 								</div>
 							</div>
 						</div>
-						<div class="row main">
-							<div class="col-lg-4">
-								<div class="profile-inner column-name">
-									<h6>Mall Balance</h6>
-								</div>
-							</div>
-							<div class="col-lg-8">
-								<div class="profile-inner column-data">
-									<h6>{{ $balance->mall_balance }}</h6>
-								</div>
-							</div>
-						</div>
-						<div class="row main">
-							<div class="col-lg-4">
-								<div class="profile-inner column-name">
-									<h6>Ad Pack Balance</h6>
-								</div>
-							</div>
-							<div class="col-lg-8">
-								<div class="profile-inner column-data">
-									<h6>{{ $balance->ad_power_balance }}</h6>
-								</div>
-							</div>
-						</div>
-						<div class="row main">
-							<div class="col-lg-5">
-								<div class="profile-inner column-name">
-									<h6>Current Investment Balance</h6>
-								</div>
-							</div>
-							<div class="col-lg-7">
-								<div class="profile-inner column-data">
-									<h6>{{ $balance->current_ad_power_balance }}</h6>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

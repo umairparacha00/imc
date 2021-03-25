@@ -5,95 +5,8 @@
 @endsection
 @section('style')
 	<style>
-        .c-wraper {
-            min-height: 130px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 2em 0;
-        }
-
-        .c-wraper h2,
-        .c-wraper h2 i {
-            color: #7367f0;
-            font-weight: 600;
-        }
-
-        .c-wraper p {
-            color: #10163a;
-            font-size: 1.2rem;
-            margin-left: 1.3em;
-        }
-
-
-        .btn-primary {
-            border-color: #4839EB !important;
-            background-color: #7367F0 !important;
-            color: #FFF;
-        }
-        .user-update a {
-            background-color: #FF9F43;
-            color: #fff;
-            padding: 10px 25px;
-            width: 150px;
-            text-align: center;
-            text-transform: uppercase;
-            font-size: 1rem;
-            border-radius: 4px;
-        }
-
-        .user-update a:hover {
-            box-shadow: 0 0 15px #FF9F43;
-            border-width: 0;
-            transition: all 0.2s;
-            color: #fff;
-        }
-        /*.custom-page-digits {*/
-        /*    padding-right: 8px;*/
-        /*}*/
-
-        .custom-page-digits>a,
-        .custom-page-item>a {
-            color: #9a9a9a !important;
-        }
-
-        .page-item.active .page-link {
-            background-color: #FF9F43;
-            border-color: #FF9F43;
-            color: #ffffff !important;
-        }
-        .search-box {
-            width: 300px;
-            background-color: #ffffff;
-            box-shadow: 0 0 8px #bfc4c9;
-            display: flex;
-            padding: 8px 12px 8px 12px;
-            align-items: center;
-            border-radius: 8px;
-        }
-        .search-dropdown{
-            position: absolute;
-            z-index: 99999;
-            background-color: #fff;
-            width: 300px;
-            margin-top: 10px;
-            box-shadow: 0 0 8px #bfc4c9;
-
-        }
-        .search-box > i{
-            font-size: 20px;
-            color: #bfc4c9;
-        }
-        .search-box > input{
-            flex: 1;
-            height: 20px;
-            outline: none;
-            border: none;
-            font-size: 18px;
-            color: #c5c9cd;
-            padding-left: 10px;
+        .text-primary {
+            color: #7367F0 !important;
         }
         .widget-content .widget-content-left .widget-subheading1 {
             opacity: 0.5;
@@ -104,139 +17,235 @@
 @section ('content')
 	<div class="scrollbar-container">
 	</div>
-	
 	<section id="dashboard-analytics">
-		@role('super-admin', 'admin')
+		{{--		<div class="row">--}}
+		{{--			<div class="col-md-6 col-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2>--}}
+		{{--							<span><i class="fal fa-badge-dollar" style="font-weight: 300;"></i></span>--}}
+		{{--							0--}}
+		{{--						</h2>--}}
+		{{--						<p>Today's Investment</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-md-6 col-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-badge-dollar" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ number_format($totalMainBalance, 2, '.', ',') }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Main Balance</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-md-6 col-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-badge-dollar" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ number_format($totalGroupBalance, 2, '.', ',') }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Group Balance</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-md-6 col-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-badge-dollar" style="font-weight: 300;"></i></span>--}}
+		{{--							0--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Investment</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-md-6 col-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ $partners }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Partners</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-md-6 col-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ $seniorDirectors }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Senior Directors</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ $directors }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Directors</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ $generalManagers }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total General Manager</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ $seniorManagers }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Senior Manager</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ $managers }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Manager</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ $seniorOfficers }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Senior Officers</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">--}}
+		{{--				<div class="card">--}}
+		{{--					<div class="c-wraper">--}}
+		{{--						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>--}}
+		{{--							{{ $officers }}--}}
+		{{--						</h2>--}}
+		{{--						<p>Total Officers</p>--}}
+		{{--					</div>--}}
+		{{--				</div>--}}
+		{{--			</div>--}}
+		{{--		--}}
+		{{--		</div>--}}
 		<div class="row">
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2>
-							<span><i class="fal fa-badge-dollar" style="font-weight: 300;"></i></span>
-							0
-						</h2>
-						<p>Today's Investment</p>
+			@role('super-admin', 'admin')
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Earning Balance
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ number_format($totalMainBalance, 2, '.', ',') }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-badge-dollar fa-2x text-gray-300"></i>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-badge-dollar" style="font-weight: 300;"></i></span>
-							{{ number_format($totalMainBalance, 2, '.', ',') }}
-						</h2>
-						<p>Total Main Balance</p>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Group Earning
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ number_format($totalGroupBalance, 2, '.', ',') }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-badge-dollar fa-2x text-gray-300"></i>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-badge-dollar" style="font-weight: 300;"></i></span>
-							{{ number_format($totalGroupBalance, 2, '.', ',') }}
-						</h2>
-						<p>Total Group Balance</p>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Direct Members
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-users fa-2x text-gray-300"></i>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-badge-dollar" style="font-weight: 300;"></i></span>
-							0
-						</h2>
-						<p>Total Investment</p>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Indirect
+									Members
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-users fa-2x text-gray-300"></i>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>
-							{{ $partners }}
-						</h2>
-						<p>Total Partners</p>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Videos I
+									watched
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">475</div>
+							</div>
+							<div class="col-auto">
+								<i class="fa fa-film fa-2x text-gray-300"></i>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>
-							{{ $seniorDirectors }}
-						</h2>
-						<p>Total Senior Directors</p>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Channels I
+									Subscribed
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+							</div>
+							<div class="col-auto">
+								<i class="fa fa-film fa-2x text-gray-300"></i>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>
-							{{ $directors }}
-						</h2>
-						<p>Total Directors</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>
-							{{ $generalManagers }}
-						</h2>
-						<p>Total General Manager</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>
-							{{ $seniorManagers }}
-						</h2>
-						<p>Total Senior Manager</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-3 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>
-							{{ $managers }}
-						</h2>
-						<p>Total Manager</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>
-							{{ $seniorOfficers }}
-						</h2>
-						<p>Total Senior Officers</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-				<div class="card">
-					<div class="c-wraper">
-						<h2><span><i class="fal fa-user-circle" style="font-weight: 300;"></i></span>
-							{{ $officers }}
-						</h2>
-						<p>Total Officers</p>
-					</div>
-				</div>
-			</div>
-		
-		</div>
-		@endrole
-		<div class="row">
-			<livewire:admin.user-search/>
+			@endrole
 		</div>
 	</section>
-	
 @endsection
 @section ('page-script')
 	<script>

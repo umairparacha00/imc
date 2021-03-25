@@ -17,11 +17,11 @@
 	<link href="{{ asset('assets/images/favicon-32x32.png')}}" rel="shortcut icon" type="image/x-icon"/>
 	<link href="{{ asset("assets/images/favicon-32x32.png")}}" rel="apple-touch-icon"/>
 	@yield('style')
+	@livewireStyles
 </head>
 
 <body>
-<div id="ni-09"
-	 class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+<div id="ni-09" class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
 			<div class="logo-src">
@@ -93,10 +93,7 @@
 									<a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
 									   class="p-0 btn d-flex align-items-center">
 										<img width="42" height="42" class="rounded-circle"
-											 src="@if(current_user()->user_file)
-											 {{ 'https://umair.s3.ap-south-1.amazonaws.com/users/profile/images/'. current_user()->user_file }}
-											 @else{{ 'https://ui-avatars.com/api/?background=645bd3&color=fff&name=' . current_user()->name }}
-											 @endif"
+											 src="{{ 'https://ui-avatars.com/api/?background=645bd3&color=fff&name=' . current_user()->name }}"
 											 alt="User Avatar">
 									</a>
 								</div>
@@ -153,29 +150,6 @@
 								Dashboard
 							</a>
 						</li>
-						<li>
-							<a href="{{ url('/profile') }}"
-							   class="{{ Request::path() === 'profile' ? 'mm-active' : '' }}">
-								<i class="metismenu-icon fal fa-address-card"></i>
-								Profile
-							</a>
-						</li>
-						<li class="{{ Request::is('purchase*') ?  'mm-active' : '' }}">
-							<a href="#">
-								<i class="metismenu-icon fal fa-shopping-basket"></i>
-								Purchase
-								<i class="metismenu-state-icon fal fa-angle-right"></i>
-							</a>
-							<ul>
-								<li>
-									<a href="{{ url('/purchase/membership') }}"
-									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Membership
-									</a>
-								</li>
-							</ul>
-						</li>
 						<li class="{{ Request::is('youtube*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fab fa-youtube"></i>
@@ -184,8 +158,8 @@
 							</a>
 							<ul>
 								<li>
-									<a href="{{ url('/purchase/ad-pack') }}"
-									   class="{{ Request::path() === 'purchase/ad-pack' ? 'mm-active' : '' }}">
+									<a href="{{ route('youtube.channels.index') }}"
+									   class="{{ Request::is('youtube/channels*')  ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>
 										Channel Links
 									</a>
@@ -214,10 +188,33 @@
 							</a>
 							<ul>
 								<li>
-									<a href="{{ url('/purchase/ad-pack') }}"
-									   class="{{ Request::path() === 'purchase/ad-pack' ? 'mm-active' : '' }}">
+									<a href="{{ route('instagram.profiles.index') }}"
+									   class="{{ Request::path() === 'instagram/profiles' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>
 										Profile Links
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('instagram.profiles.index') }}"
+									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Purchase Followers
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ Request::is('facebook*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fab fa-facebook"></i>
+								Facebook
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('facebook.pages.index') }}"
+									   class="{{ Request::path() === 'facebook/pages' ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6"></i>
+										Page Links
 									</a>
 								</li>
 								<li>
@@ -229,35 +226,31 @@
 								</li>
 							</ul>
 						</li>
-{{--						<li class="{{ Request::is('tiktok*') ?  'mm-active' : '' }}">--}}
-{{--							<a href="#">--}}
-{{--								<i class="metismenu-icon fab fa-tiktok"></i>--}}
-{{--								Tiktok--}}
-{{--								<i class="metismenu-state-icon fal fa-angle-right"></i>--}}
-{{--							</a>--}}
-{{--							<ul>--}}
-{{--								<li>--}}
-{{--									<a href="{{ url('/purchase/ad-pack') }}"--}}
-{{--									   class="{{ Request::path() === 'purchase/ad-pack' ? 'mm-active' : '' }}">--}}
-{{--										<i class="fal fa-circle mr-3 fx-6"></i>--}}
-{{--										Profile Links--}}
-{{--									</a>--}}
-{{--								</li>--}}
-{{--								<li>--}}
-{{--									<a href="{{ url('/purchase/membership') }}"--}}
-{{--									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">--}}
-{{--										<i class="fal fa-circle mr-3 fx-6">--}}
-{{--										</i>Purchase--}}
-{{--									</a>--}}
-{{--								</li>--}}
-{{--							</ul>--}}
-{{--						</li>--}}
-						<li>
-							<a href="{{ url('/transactions') }}"
-							   class="{{ Request::path() === 'transactions' ? 'mm-active' : '' }}">
+						<li class="@if (Request::is('transactions') || Request::is('withdraw'))
+								mm-active
+								@else
+						
+						@endif"
+						>
+							<a href="#">
 								<i class="metismenu-icon fal fa-usd-circle"></i>
 								Transactions
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
 							</a>
+							<ul>
+								<li>
+									<a href="{{ url('/transactions') }}"
+									   class="{{ Request::path() === 'transactions' ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6"></i>Transactions
+									</a>
+								</li>
+								<li>
+									<a href="{{ url('/withdraw')}}"
+									   class="{{ Request::path() === 'withdraw' ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6"></i>Withdraw
+									</a>
+								</li>
+							</ul>
 						</li>
 						<li class="{{ Request::is('network*') ?  'mm-active' : '' }}">
 							<a href="#">
@@ -285,6 +278,30 @@
 									</a>
 								</li>
 							</ul>
+						</li>
+						<li class="{{ Request::is('purchase*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-shopping-basket"></i>
+								Purchase
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ url('/purchase/membership') }}"
+									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Membership
+									</a>
+								</li>
+							</ul>
+						</li>
+						
+						<li>
+							<a href="{{ url('/profile') }}"
+							   class="{{ Request::path() === 'profile' ? 'mm-active' : '' }}">
+								<i class="metismenu-icon fal fa-address-card"></i>
+								Profile
+							</a>
 						</li>
 						<li class="{{ Request::is('settings*') ?  'mm-active' : '' }}">
 							<a href="#">
@@ -322,11 +339,11 @@
 		</div>
 	</div>
 </div>
+@include('sweetalert::alert')
+</body>
 <script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
 <script type="text/javascript" src="{{ asset('assets/js/main.js')}}"></script>
 <script type="text/javascript" src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
 @yield('page-script')
-@include('sweetalert::alert')
-</body>
-
+@livewireScripts
 </html>

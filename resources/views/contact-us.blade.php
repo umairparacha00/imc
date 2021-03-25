@@ -39,7 +39,7 @@
                     </span>
 								</div>
 								<h3 class="center">Email</h3>
-								<p class="center">support@amlaen.com</p>
+								<p class="center">support@imc.com</p>
 								<a href="#" class="btn btn-lg">Email Us</a>
 							</div>
 						</div>

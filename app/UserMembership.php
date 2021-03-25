@@ -8,12 +8,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserMembership extends Model
 {
-	public function upgradeMembership($user_id, $membershipId)
+	public function upgradeMembership($user_id, $membershipId, $months)
 	{
 		UserMembership::where('user_id', $user_id)->update([
 			'membership_id' => $membershipId,
-			'expires_at' =>  Carbon::today()->addMonths(2),
-			'status' => 1,
+			'expires_at' =>  Carbon::today()->addMonths($months),
+			'status' => 0,
 		]);
 	}
 	public function user(): BelongsTo

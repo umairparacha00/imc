@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
 			$table->string('gender')->nullable();
 			$table->date('date_of_birth')->nullable();
 			$table->integer('status')->default(0);
+			$table->string('purchasing_status')->default('can');
 			$table->string('password');
 			$table->timestamp('email_verified_at')->nullable();
 			$table->timestamp('last_logged_at')->nullable();

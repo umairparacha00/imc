@@ -6,7 +6,11 @@
 //	use App\UserMembership;
 //	use App\User;
 
+	use App\FollowedLinks;
+	use App\Link;
+	use App\Membership;
 	use App\ModelHasRole;
+	use App\UserMembership;
 
 	if (!function_exists('current_user')) {
 		function current_user(): ?\Illuminate\Contracts\Auth\Authenticatable
@@ -29,6 +33,23 @@
 			$membershipId = $UserMembershipId->membership_id;
 			$membership = Membership::find($membershipId);
 			return $membership->name;
+		}
+	}
+	if (!function_exists('linkOriginalImage')) {
+		function linkOriginalImage($id)
+		{
+			$linkData = Link::find($id);
+			return $linkData->image;
+		}
+	}
+
+	if (!function_exists('link_checker')) {
+		function link_checker($link_id): bool
+		{
+			$linkData = FollowedLinks::where('user_id', current_user()->id)
+				->where('link_id', $link_id)
+				->first();
+			return is_null($linkData);
 		}
 	}
 //

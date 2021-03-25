@@ -6,6 +6,7 @@
 	use App\Http\Controllers\Controller;
 	use App\User;
 	use App\UserMembership;
+	use App\Withdraw;
 	use Carbon\Carbon;
 	use Illuminate\Auth\Events\Registered;
 	use Illuminate\Contracts\Foundation\Application;
@@ -60,7 +61,6 @@
 				'name' => $data['name'],
 				'email' => $data['email'],
 				'sponsor' => $data['sponsor'],
-				'pl_pin' => $data['pl_pin'],
 				'password' => Hash::make($data['password']),
 			]);
 			Balance::create([
@@ -92,7 +92,6 @@
 				'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9 ]*$/'],
 				'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
 				'sponsor' => ['required', 'numeric', 'exists:users,account_id'],
-				'pl_pin' => ['required', 'min:6', 'numeric'],
 				'password' => ['required', 'string', 'min:8', 'confirmed'],
 			], $message);
 		}
@@ -109,7 +108,8 @@
 			$transactions = $user->transactions()->paginate(15);
 			$permissions = Permission::where('guard_name', 'web')->get();
 			$users = User::where('sponsor', $user->account_id)->get();
-			return view('Admin.users.show', ['user' => $user, 'permissions' => $permissions, 'users' => $users, 'transactions' => $transactions]);
+			$withdraws = Withdraw::where('user_id', $user->id)->get();
+			return view('Admin.users.show', ['user' => $user, 'permissions' => $permissions, 'users' => $users, 'transactions' => $transactions, 'withdraws' => $withdraws]);
 		}
 
 		/**
@@ -143,9 +143,6 @@
 			if ($request->name !== null) {
 				$data['name'] = $validData['name'];
 			}
-			if ($request->cnic !== null) {
-				$data['cnic'] = $validData['cnic'];
-			}
 			if ($request->date_of_birth !== null) {
 				$data['date_of_birth'] = $validData['date_of_birth'];
 			}
@@ -170,9 +167,6 @@
 			} else {
 				$data['sponsor'] = $user->sponsor;
 			}
-			if ($request->pl_pin !== null) {
-				$data['pl_pin'] = $validData['pl_pin'];
-			}
 			if ($request->country !== null) {
 				$data['country'] = $validData['country'];
 			}
@@ -196,7 +190,6 @@
 			$rules = [
 				'username' => ['Nullable', 'string', 'max:255', 'regex:/^([A-Za-z0-9.\_]+)$/'],
 				'name' => ['Nullable', 'string', 'max:255', 'regex:/^[a-zA-Z0-9. ]*$/'],
-				'cnic' => ['Nullable', 'regex:/^[0-9+]{5}-[0-9+]{7}-[0-9]{1}$/'],
 				'date_of_birth' => ['before:today'],
 				'phone' => ['Nullable', 'regex:/^03[0-9]{9}$/'],
 				'gender' => ['Nullable', 'in:male,female,other'],
@@ -204,7 +197,6 @@
 				'password' => ['Nullable'],
 				'status' => ['Nullable', 'in:0, 1, 2, 3'],
 				'sponsor' => ['Nullable', 'numeric', 'exists:users,account_id'],
-				'pl_pin' => ['Nullable', 'numeric'],
 				'country' => ['Nullable', 'regex:/^[a-zA-Z0-9 ]*$/', 'string'],
 				'state' => ['Nullable', 'regex:/^[a-zA-Z0-9 ]*$/', 'string'],
 				'city' => ['Nullable', 'regex:/^[a-zA-Z0-9 ]*$/', 'string'],
@@ -214,7 +206,6 @@
 				'country.regex' => 'Country should only contain alphabets, spaces and numbers.',
 				'city.regex' => 'City should only contain alphabets, spaces and numbers.',
 				'state.regex' => 'State should only contain alphabets, spaces and numbers.',
-				'cnic.regex' => 'CNIC format is e.g: 33100-8921956-8 .',
 			];
 
 			return Validator::make($data, $rules, $message);

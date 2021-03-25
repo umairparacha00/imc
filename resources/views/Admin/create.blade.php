@@ -146,17 +146,6 @@
 												</div>
 												<div class="form-group">
 													<div class="forms-control">
-														<label>Personal Pin</label>
-														<input type="text"
-															   name="pl_pin"
-															   placeholder="Personal Pin"
-															   required class="form-control"
-														/>
-														<div class="help-block"></div>
-													</div>
-												</div>
-												<div class="form-group">
-													<div class="forms-control">
 														<label>Confirm Password</label>
 														<input type="password"
 															   name="password_confirmation"

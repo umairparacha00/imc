@@ -33,7 +33,7 @@
                         <!-- users edit media object start -->
                         <div class="media mb-4 d-flex align-items-center">
                             <a class="mr-3" href="#">
-                                <img src="@if(current_user()->user_file){{ asset('storage/'.current_user()->user_file) }}@else{{ 'https://ui-avatars.com/api/?size=128&background=645bd3&color=fff&name=' .  current_user()->name }}@endif"
+                                <img src="{{ 'https://ui-avatars.com/api/?size=128&background=645bd3&color=fff&name=' .  current_user()->name }}"
                                      alt="users avatar"
                                      class="users-avatar-shadow rounded-circle" height="90" width="90">
                             </a>
@@ -224,7 +224,7 @@
                                 <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                                     <button type="submit" class="btn btn-primary mr-sm-2 mb-2">Update
                                     </button>
-                                    <a href="{{ route('profile') }}" class="btn btn-danger mb-2">Back
+                                    <a href="{{ route('dashboard') }}" class="btn btn-danger mb-2">Back
                                     </a>
                                 </div>
                             </div>

@@ -1,29 +1,31 @@
 <?php
 
-namespace App\Http\Controllers;
+	namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
+	use App\UserMembership;
+	use Illuminate\Contracts\Support\Renderable;
+	use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-//        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return Renderable
-     */
-    public function index(): Renderable
+	class HomeController extends Controller
 	{
-        return view('dashboard');
-    }
-}
+		/**
+		 * Create a new controller instance.
+		 *
+		 * @return void
+		 */
+		public function __construct()
+		{
+//        $this->middleware('auth');
+		}
+
+		/**
+		 * Show the application dashboard.
+		 *
+		 * @return Renderable
+		 */
+		public function index(): Renderable
+		{
+			$UserMembership = UserMembership::where('user_id', current_user()->id)->first();
+			return view('dashboard', ['userMembership' => $UserMembership]);
+		}
+	}

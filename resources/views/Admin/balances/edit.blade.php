@@ -152,39 +152,13 @@
 										</div>
 									</div>
 									<div class="col-md-4 col-sm-12">
-									
 									</div>
-									<div class="col-md-4 col-sm-12">
-										<div class="form-group">
-											<div class="forms-control">
-												<label>Mall Balance</label>
-												<input type="number"
-													   class="form-control @error('mall_balance') is-invalid @enderror"
-													   name="mall_balance"
-													   placeholder="Mall Balance"
-													   value="{{ $balance->mall_balance }}"
-												/>
-												<div class="help-block"></div>
+									<div class="col-md-8 col-sm-12">
+										<div class="d-flex justify-content-end">
+											<div class="btn-actions-pane-right">
+												<button type="submit" class="btn btn-lg btn-primary">Update</button>
 											</div>
 										</div>
-									</div>
-									<div class="col-md-4 col-sm-12">
-										<div class="form-group">
-											<div class="forms-control">
-												<label>Ad Pack Balance</label>
-												<input type="number"
-													   class="form-control @error('ad_power_balance') is-invalid @enderror"
-													   name="ad_power_balance"
-													   placeholder="Ad PackBalance"
-													   value="{{ $balance->ad_power_balance }}"
-												/>
-												<div class="help-block"></div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-4 col-sm-12 pt-4">
-										<button type="submit" class="btn btn-primary">Update
-										</button>
 									</div>
 								</div>
 							</form>

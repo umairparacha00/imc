@@ -8,7 +8,9 @@
 	{
 		public function directReferralsIndex()
 		{
-			$directReferrals = User::where('sponsor', current_user()->account_id)->get();
+			$directReferrals = User::where('sponsor', current_user()->account_id)
+				->orderBy('id', 'asc')
+				->paginate(15);
 			return view('network.direct-referrals', compact('directReferrals'));
 		}
 

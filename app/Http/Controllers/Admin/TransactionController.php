@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+	namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Transaction;
-use Illuminate\Http\Request;
+	use App\Http\Controllers\Controller;
+	use App\Transaction;
+	use Illuminate\Http\Request;
 
-class TransactionController extends Controller
-{
-	public function index()
+	class TransactionController extends Controller
 	{
-		$transactions = Transaction::paginate(10);
-		return view('Admin.transactions.transactions', compact('transactions'));
+		public function index()
+		{
+			$transactions = Transaction::paginate(10);
+			return view('Admin.transactions.transactions', compact('transactions'));
+		}
 	}
-}

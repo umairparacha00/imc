@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+	namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+	use Illuminate\Http\Request;
 
-class UserMembershipController extends Controller
-{
-    //
-}
+	class UserMembershipController extends Controller
+	{
+		//
+	}

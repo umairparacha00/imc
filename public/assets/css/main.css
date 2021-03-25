@@ -37,6 +37,7 @@
   *::before,
   *::after {
     box-sizing: border-box;
+    --tw-shadow: 0 0 #0000;
   }
   html {
     font-family: sans-serif;
@@ -203,7 +204,7 @@
     display: inline-block;
     margin-bottom: 0.5rem;
     color: #212529;
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
   button {
     border-radius: 0;
@@ -5518,6 +5519,9 @@
   .rounded {
     border-radius: 0.25rem !important;
   }
+.rounded-lg {
+  border-radius: 0.5rem !important;
+}
   .rounded-top {
     border-top-left-radius: 0.25rem !important;
     border-top-right-radius: 0.25rem !important;
@@ -6329,6 +6333,9 @@
   }
   .overflow-auto {
     overflow: auto !important;
+  }
+  .overflow-y-auto{
+    overflow-y: auto;
   }
   .overflow-hidden {
     overflow: hidden !important;

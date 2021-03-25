@@ -255,32 +255,6 @@
 							</div>
 						</div>
 					</div>
-					@role('super-admin', 'admin')
-					<div class="row main">
-						<div class="col-lg-4">
-							<div class="profile-inner column-name">
-								<h6>Downline Investment</h6>
-							</div>
-						</div>
-						<div class="col-lg-8">
-							<div class="profile-inner column-data">
-								<h6>{{ user_downline_investment($user->account_id) }}</h6>
-							</div>
-						</div>
-					</div>
-					<div class="row main">
-						<div class="col-lg-4">
-							<div class="profile-inner column-name">
-								<h6>User Investment</h6>
-							</div>
-						</div>
-						<div class="col-lg-8">
-							<div class="profile-inner column-data">
-								<h6>{{ number_format($user->ad_power_balance(), 2, '.', ',') }}</h6>
-							</div>
-						</div>
-					</div>
-					@endrole
 					<div class="row main">
 						<div class="col-lg-4">
 							<div class="profile-inner column-name">
@@ -317,10 +291,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-			<div class="col-lg-6">
-				<div class="profile-outer">
 					<div class="row main">
 						<div class="col-lg-4">
 							<div class="profile-inner column-name">
@@ -353,30 +323,10 @@
 							</div>
 						</div>
 					</div>
-					<div class="row main">
-						<div class="col-lg-4">
-							<div class="profile-inner column-name">
-								<h6>CNIC</h6>
-							</div>
-						</div>
-						<div class="col-lg-8">
-							<div class="profile-inner column-data">
-								<h6>{{ $user->cnic }}</h6>
-							</div>
-						</div>
-					</div>
-					<div class="row main">
-						<div class="col-lg-4">
-							<div class="profile-inner column-name">
-								<h6>Personal Pin</h6>
-							</div>
-						</div>
-						<div class="col-lg-8">
-							<div class="profile-inner column-data">
-								<h6>{{ $user->pl_pin }}</h6>
-							</div>
-						</div>
-					</div>
+				</div>
+			</div>
+			<div class="col-lg-6">
+				<div class="profile-outer">
 					<div class="row main">
 						<div class="col-lg-4">
 							<div class="profile-inner column-name">
@@ -463,30 +413,6 @@
 						<div class="col-lg-8">
 							<div class="profile-inner column-data">
 								<h6>{{ number_format($user->balance->group_balance, 2, '.', ',') }}</h6>
-							</div>
-						</div>
-					</div>
-					<div class="row main">
-						<div class="col-lg-4">
-							<div class="profile-inner column-name">
-								<h6>Mall Balance</h6>
-							</div>
-						</div>
-						<div class="col-lg-8">
-							<div class="profile-inner column-data">
-								<h6>{{ number_format($user->balance->mall_balance, 2, '.', ',') }}</h6>
-							</div>
-						</div>
-					</div>
-					<div class="row main">
-						<div class="col-lg-4">
-							<div class="profile-inner column-name">
-								<h6>Current Ad Pack Balance</h6>
-							</div>
-						</div>
-						<div class="col-lg-8">
-							<div class="profile-inner column-data">
-								<h6>{{ number_format($user->balance->current_ad_power_balance, 2, '.', ',') }}</h6>
 							</div>
 						</div>
 					</div>
@@ -642,6 +568,57 @@
 							@endforeach
 						</table>
 						{{ $transactions->links('vendor.pagination.bootstrap-4') }}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="d-flex justify-content-between align-items-center pb-2 pt-3">
+				<div>
+					<h3>Withdraws</h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="profile-outer">
+					<div class="table-responsive">
+						<table class="align-middle mb-0 table table-striped table-hover">
+							<thead>
+							<tr>
+								<th>ID</th>
+								<th>Gateway</th>
+								<th>Amount</th>
+								<th>Status</th>
+								<th>Date</th>
+							</tr>
+							</thead>
+							<tbody>
+							@foreach ($withdraws as $withdraw)
+								<tr>
+									<td>{{ $withdraw->id }}</td>
+									<td>{{ $withdraw->paymentGateway->name }}</td>
+									<td>{{ $withdraw->amount }}</td>
+									<td>
+										<div class="badge
+													@if ($withdraw->status === 0)
+													badge-info
+													@elseif($withdraw->status === 1)
+													badge-success
+													@endif"
+										>
+											@if ($withdraw->status === 0)
+												pending
+											@elseif($withdraw->status === 1)
+												Success
+											@endif
+										</div>
+									</td>
+									<td>{{ Carbon\Carbon::parse($withdraw->created_at)->format('d M Y') }}</td>
+								</tr>
+							@endforeach
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>

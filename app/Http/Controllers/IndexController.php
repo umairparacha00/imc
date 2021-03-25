@@ -1,34 +1,36 @@
 <?php
 
-namespace App\Http\Controllers;
+	namespace App\Http\Controllers;
 
-class IndexController extends Controller
-{
-	public function index()
+	class IndexController extends Controller
 	{
-		return view('index');
-	}
+		public function index()
+		{
+			return view('index');
+		}
 
-	public function contact_us()
-	{
-		return view('contact-us');
-	}
-	public function pricing()
-	{
-		return view('pricing');
-	}
-	public function services()
-	{
-		return view('services');
-	}
+		public function contact_us()
+		{
+			return view('contact-us');
+		}
 
-	public function about_us()
-	{
-		return view('about-us');
-	}
+		public function pricing()
+		{
+			return view('pricing');
+		}
 
-	public function terms_and_conditions()
-	{
-		return view('terms_and_conditions');
+		public function services()
+		{
+			return view('services');
+		}
+
+		public function about_us()
+		{
+			return view('about-us');
+		}
+
+		public function terms_and_conditions()
+		{
+			return view('terms_and_conditions');
+		}
 	}
-}

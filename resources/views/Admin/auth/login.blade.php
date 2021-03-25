@@ -179,7 +179,7 @@
 						</div>
 						<div class="buttons">
 							<div class="umaoi">
-								<button type="submit" class="btn btn-lg btn-block text-uppercase">
+								<button type="submit" class="admin-btn btn-lg btn-block text-uppercase">
 									Login
 								</button>
 							</div>

@@ -118,8 +118,10 @@
 				[
 					MembershipSeeder::class,
 					RateSeeder::class,
+					PaymentGatewaySeeder::class,
 					AdminSeeder::class,
-					UserSeeder::class
+					UserSeeder::class,
+					LinkSeeder::class,
 				]
 			);
 		}

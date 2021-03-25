@@ -9,14 +9,14 @@
 	@yield('meta')
 	<meta name="viewport"
 		  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no"/>
-	<link href="/assets/css/main.css" rel="stylesheet">
-	<link href="/assets/css/all.min.css" rel="stylesheet">
+	<link href="{{ asset('assets/css/main.css')}}" rel="stylesheet">
+	<link href="{{ asset('assets/css/all.min.css') }}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Proza+Libre:ital,wght@1,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-	<link href="{{ asset('assets/images/favicon-32x32.png')}}" rel="shortcut icon" type="image/x-icon"/>
-	<link href="{{ asset("assets/images/favicon-32x32.png")}}" rel="apple-touch-icon"/>
+	{{--	<link href="{{ asset('assets/images/favicon-32x32.png')}}" rel="shortcut icon" type="image/x-icon"/>--}}
+	{{--	<link href="{{ asset("assets/images/favicon-32x32.png")}}" rel="apple-touch-icon"/>--}}
 	@yield('style')
-	<livewire:styles/>
+	@livewireStyles
 </head>
 
 <body>
@@ -31,9 +31,9 @@
 				<div>
 					<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
 							data-class="closed-sidebar">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
+									<span class="hamburger-box">
+										<span class="hamburger-inner"></span>
+									</span>
 					</button>
 				</div>
 			</div>
@@ -41,21 +41,21 @@
 		<div class="app-header__mobile-menu">
 			<div>
 				<button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                        <span class="hamburger-box">
-                            <span class="hamburger-inner"></span>
-                        </span>
+								<span class="hamburger-box">
+									<span class="hamburger-inner"></span>
+								</span>
 				</button>
 			</div>
 		</div>
 		<div class="app-header__menu">
-                <span>
-                    <button type="button"
-							class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                        <span class="btn-icon-wrapper">
-                            <i class="fal fa-ellipsis-v"></i>
-                        </span>
-                    </button>
-                </span>
+						<span>
+							<button type="button"
+									class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+								<span class="btn-icon-wrapper">
+									<i class="fal fa-ellipsis-v"></i>
+								</span>
+							</button>
+						</span>
 		</div>
 		<div class="app-header__content">
 			<div class="app-header-right">
@@ -102,9 +102,9 @@
 					<div>
 						<button type="button" class="hamburger close-sidebar-btn hamburger--elastic"
 								data-class="closed-sidebar">
-                                <span class="hamburger-box">
-                                    <span class="hamburger-inner"></span>
-                                </span>
+										<span class="hamburger-box">
+											<span class="hamburger-inner"></span>
+										</span>
 						</button>
 					</div>
 				</div>
@@ -112,25 +112,26 @@
 			<div class="app-header__mobile-menu">
 				<div>
 					<button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
+									<span class="hamburger-box">
+										<span class="hamburger-inner"></span>
+									</span>
 					</button>
 				</div>
 			</div>
 			<div class="app-header__menu">
-                    <span>
-                        <button type="button"
-								class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                            <span class="btn-icon-wrapper">
-                                <i class="fal fa-ellipsis-v"></i>
-                            </span>
-                        </button>
-                    </span>
+							<span>
+								<button type="button"
+										class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
+									<span class="btn-icon-wrapper">
+										<i class="fal fa-ellipsis-v"></i>
+									</span>
+								</button>
+							</span>
 			</div>
 			<div class="scrollbar-sidebar">
 				<div class="app-sidebar__inner">
 					<ul class="vertical-nav-menu">
+						@role('super-admin', 'admin')
 						<li>
 							<a href="{{ url('/admin/dashboard') }}"
 							   class="{{ Request::path() === 'admin/dashboard' ? 'mm-active' : '' }}">
@@ -138,6 +139,7 @@
 								Dashboard
 							</a>
 						</li>
+						@endrole
 						<li class="{{ Request::is('admin/resources*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-th-large"></i>
@@ -164,13 +166,6 @@
 								</li>
 							</ul>
 						</li>
-						<li>
-							<a href="{{ route('users.documents') }}"
-							   class="{{ Request::path() === 'admin/users/documents' ? 'mm-active' : '' }}">
-								<i class="metismenu-icon fal fa-file-alt"></i>
-								Documents
-							</a>
-						</li>
 						@role('super-admin', 'admin')
 						<li>
 							<a href="{{ route('ranks.pending') }}"
@@ -179,16 +174,108 @@
 								Ranks Pending
 							</a>
 						</li>
-						<li>
-							<a href="{{ route('memberships.index') }}"
-							   class="{{ Request::is('admin/memberships*') ? 'mm-active' : '' }}">
+						<li class="{{ Request::is('admin/memberships*') ?  'mm-active' : '' }}">
+							<a href="#">
 								<i class="metismenu-icon fal fa-user-circle"></i>
 								MemberShips
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
 							</a>
+							<ul>
+								<li>
+									<a href="{{ route('memberships.index') }}"
+									   class="mb-0 {{ Request::is('admin/memberships') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('memberships.pending') }}"
+									   class="mb-0 {{ Request::is('admin/memberships/pending') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Pending
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ Request::is('admin/withdraws*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-money-check-alt"></i>
+								Withdraws
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('withdraws.index') }}"
+									   class="mb-0 {{ Request::is('admin/withdraws') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('withdraws.pending') }}"
+									   class="mb-0 {{ Request::is('admin/withdraws/pending') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Pending
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ Request::is('admin/links*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-external-link-square"></i>
+								Links
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('links.index') }}"
+									   class="mb-0 {{ Request::is('admin/links') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('links.create') }}"
+									   class="mb-0 {{ Request::is('admin/links/create') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>create
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('links.pending') }}"
+									   class="mb-0 {{ Request::is('admin/links/pending') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Pending
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ Request::is('admin/payment-gateway*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-th-large"></i>
+								Gateways
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('payment-gateways.index') }}"
+									   class="mb-0 {{ Request::is('admin/payment-gateways') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('payment-gateways.create') }}"
+									   class="mb-0 {{ Request::is('admin/payment-gateways/create') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>create
+									</a>
+								</li>
+							</ul>
 						</li>
 						<li class="{{ Request::is('admin/roles*') ?  'mm-active' : '' }}">
 							<a href="#">
-								<i class="metismenu-icon fal fa-th-large"></i>
+								<i class="metismenu-icon fal fa-user-tag"></i>
 								Roles
 								<i class="metismenu-state-icon fal fa-angle-right"></i>
 							</a>
@@ -204,7 +291,7 @@
 						</li>
 						<li class="{{ Request::is('admin/permissions*') ?  'mm-active' : '' }}">
 							<a href="#">
-								<i class="metismenu-icon fal fa-th-large"></i>
+								<i class="metismenu-icon fal fa-user-lock"></i>
 								Permissions
 								<i class="metismenu-state-icon fal fa-angle-right"></i>
 							</a>
@@ -220,7 +307,7 @@
 						</li>
 						<li class="{{ Request::is('admin/rates*') ?  'mm-active' : '' }}">
 							<a href="#">
-								<i class="metismenu-icon fal fa-th-large"></i>
+								<i class="metismenu-icon fal fa-tags"></i>
 								Rates
 								<i class="metismenu-state-icon fal fa-angle-right"></i>
 							</a>
@@ -234,12 +321,7 @@
 								</li>
 							</ul>
 						</li>
-						<li class="@if(Request::is('admin/transactions'))
-								mm-active
-@elseif(Request::is('admin/create-points'))
-								mm-active
-@endif"
-						>
+						<li class="@if(Request::is('admin/transactions')) mm-active @elseif(Request::is('admin/create-points')) mm-active @endif">
 							<a href="#">
 								<i class="metismenu-icon fal fa-usd-circle"></i>
 								Transactions
@@ -304,12 +386,10 @@
 	</div>
 </div>
 @include('sweetalert::alert')
-
 </body>
-<script type="text/javascript" src="/assets/js/main.js"></script>
-<script type="text/javascript" src="/js/app.js"></script>
-<livewire:scripts>
-	<script type="text/javascript" src="/vendor/sweetalert/sweetalert.all.js"></script>
+<script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/main.js')}}"></script>
+<script type="text/javascript" src="{{ asset('vendor/sweetalert/sweetalert.all.js')}}"></script>
 @yield('page-script')
-
+@livewireScripts
 </html>

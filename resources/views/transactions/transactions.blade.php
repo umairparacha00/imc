@@ -146,9 +146,9 @@
                                     <td>{{ $transaction->id }}</td>
                                     <td>{{ $transaction->balance_field }}</td>
                                     <td>{{ $transaction->credit_debit }}</td>
-                                    <td>{{ number_format($transaction->transaction_amount, 2, '.', ',') }}</td>
-                                    <td>{{ number_format($transaction->old_balance, 2, '.', ',') }}</td>
-                                    <td>{{ number_format($transaction->new_balance, 2, '.', ',') }}</td>
+                                    <td>{{ number_format($transaction->transaction_amount, 6, '.', ',') }}</td>
+                                    <td>{{ number_format($transaction->old_balance, 6, '.', ',') }}</td>
+                                    <td>{{ number_format($transaction->new_balance, 6, '.', ',') }}</td>
                                     <td style="width: 100px;">{{ $transaction->transactions_details }}
                                     </td>
                                     <td>{{ $transaction->trans_date_time }}</td>

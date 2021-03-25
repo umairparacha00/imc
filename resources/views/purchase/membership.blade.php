@@ -268,13 +268,23 @@
 						<form method="POST" action="{{ route('membership.post') }}" autocomplete="off"
 							  id="membershipPurchaseForm">
 							@csrf
+							<div class="alert alert-info alert-dismissible fade show" role="alert">
+								<strong>Notice:</strong> Please send the payment before purchasing
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="row">
+								<livewire:payment-gateway-selector />
+							</div>
 							<div class="row justify-content-center align-items-center">
+								
 								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
 									<div class="form-group">
 										<label for="memberships">
 											Memberships
 										</label>
-										<select class="custom-select" name="name" id="name">
+										<select class="custom-select @error('name') is-invalid @enderror" name="name" id="name">
 											<option selected disabled>-- Select Membership --</option>
 											@foreach ($memberships as $membership)
 												@if (current_user()->membershipId->status == 0)
@@ -298,9 +308,10 @@
 								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
 									<div class="form-group">
 										<label>
-											Enter Pin
+											Transaction Id
 										</label>
-										<input type="text" class="form-control" name="pin" id="pin">
+										<input type="text" class="form-control @error('transaction_id') is-invalid @enderror" name="transaction_id"
+											   id="transaction_id">
 									</div>
 								</div>
 								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12"></div>
@@ -314,7 +325,7 @@
 										</div>
 										<div class="btn-actions-pane-right">
 											<button type="button" id="modal-btn" class="btn btn-default">
-												Upgrade
+												Purchase
 											</button>
 										</div>
 									</div>
@@ -398,7 +409,8 @@
                 e.preventDefault();
                 axios.post('/getMembershipPrice', {
                     "name": $("#name").val(),
-                    "pin": $("#pin").val()
+                    "transaction_id": $("#transaction_id").val(),
+					"payment_gateway_id": $("#payment_gateway_id").val()
                 }).then(function (response) {
                     Swal.fire({
                         text: 'Are you sure you want to proceed to update to ' + response.data.name + '. its prices is (' + response.data.price + ')?',
@@ -439,7 +451,8 @@
         $("#modal-btn").on('click', function () {
             axios.post('/getMembershipPrice', {
                 "name": $("#name").val(),
-                "pin": $("#pin").val()
+                "transaction_id": $("#transaction_id").val(),
+                "payment_gateway_id": $("#payment_gateway_id").val()
             }).then(function (response) {
                 Swal.fire({
                     text: 'Are you sure you want to proceed to update to ' + response.data.name + '. its prices is (' + response.data.price + ')?',

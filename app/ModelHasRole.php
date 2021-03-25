@@ -10,5 +10,5 @@ class ModelHasRole extends Model
 	 * @var array
 	 */
 	protected $guarded = [];
-	public $timestamps = TRUE;
+	public $timestamps = false;
  }

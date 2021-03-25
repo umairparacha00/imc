@@ -18,8 +18,7 @@
 		{
 
 			$data = $this->validator($request->all())->validate();
-			if(Hash::check($data['current_password'], current_user()->password))
-			{
+			if (Hash::check($data['current_password'], current_user()->password)) {
 				$user->where('id', current_user()->id)->update(['password' => bcrypt($data['password'])]);
 				return back()->withToastSuccess('Password Updated Successfully!');
 			} else {

@@ -5,40 +5,16 @@
 
 	trait Bbalance
 	{
-		public function currentMainBalance()
+		public function currentMainBalance($id)
 		{
-			$freshBalance = current_user()->balance->fresh();
-			return $freshBalance->main_balance;
+			$balance = Balance::where('user_id', $id)->first();
+			return $balance->main_balance;
 		}
 
-		public function currentAdPackBalance()
+		public function currentGroupBalance($id)
 		{
-			$freshBalance = current_user()->balance->fresh();
-			return $freshBalance->ad_power_balance;
-		}
-
-		public function currentInvestmentAdPackBalance()
-		{
-			$freshBalance = current_user()->balance->fresh();
-			return $freshBalance->current_ad_power_balance;
-		}
-
-		public function totalInvestment()
-		{
-			$balance = Balance::all();
-			return $balance->sum('ad_power_balance');
-		}
-
-		public function currentGroupBalance()
-		{
-			$freshBalance = current_user()->balance->fresh();
-			return $freshBalance->group_balance;
-		}
-
-		public function currentMallBalance()
-		{
-			$freshBalance = current_user()->balance->fresh();
-			return $freshBalance->mall_balance;
+			$balance = Balance::where('user_id', $id)->first();
+			return $balance->group_balance;
 		}
 
 		public function updateGroupBalance($id, $amount)
@@ -66,19 +42,5 @@
 		{
 			$mainBalance = Balance::all();
 			return $mainBalance->sum('group_balance');
-		}
-
-		public function updateAdPackBalance($id, $amount)
-		{
-			Balance::where('user_id', $id)->update([
-				'ad_power_balance' => $amount
-			]);
-		}
-
-		public function updateCurrentAdPackBalance($id, $amount)
-		{
-			Balance::where('user_id', $id)->update([
-				'current_ad_power_balance' => $amount
-			]);
 		}
 	}

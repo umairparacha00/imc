@@ -15,15 +15,10 @@ class CreateBalancesTable extends Migration
     {
         Schema::create('balances', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('user_id');
+			$table->foreignId('user_id')->constrained()->onDelete('cascade');
 			$table->decimal('main_balance',25, 10)->default(0);
 			$table->decimal('group_balance',25, 10)->default(0);
 			$table->timestamps();
-
-			$table->foreign('user_id')
-				->references('id')
-				->on('users')
-				->onDelete('cascade');
         });
     }
 

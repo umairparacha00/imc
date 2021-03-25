@@ -147,7 +147,7 @@ svg {
   font-size: 15px;
   font-weight: 700;
 }
-.btn {
+.admin-btn {
   background: linear-gradient(
           118deg,
           rgba(115, 103, 240, 1),
@@ -163,7 +163,7 @@ svg {
 .plk_09nkj34:hover .btn {
   box-shadow: 0 8px 25px -8px rgba(115, 103, 240, 1);
 }
-.umaoi:hover .btn {
+.umaoi:hover .admin-btn {
   box-shadow: 0 8px 25px -8px rgba(115, 103, 240, 1);
   color: #ffffff;
 }

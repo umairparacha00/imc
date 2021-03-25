@@ -15,21 +15,11 @@ class CreateUserMembershipsTable extends Migration
     {
         Schema::create('user_memberships', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('user_id');
-			$table->foreignId('membership_id');
+			$table->foreignId('user_id')->constrained()->onDelete('cascade');
+			$table->foreignId('membership_id')->constrained()->onDelete('cascade');
 			$table->date('expires_at');
 			$table->boolean('status')->default('1');
 			$table->timestamps();
-
-			$table->foreign('user_id')
-				->references('id')
-				->on('users')
-				->onDelete('cascade');
-
-			$table->foreign('membership_id')
-				->references('id')
-				->on('memberships')
-				->onDelete('cascade');
         });
     }
 

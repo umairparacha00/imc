@@ -57,11 +57,11 @@ return [
 
         's3' => [
             'driver' => 's3',
-            'key' => env('AWS_ACCESS_KEY_ID'),
-            'secret' => env('AWS_SECRET_ACCESS_KEY'),
-            'region' => env('AWS_DEFAULT_REGION'),
-            'bucket' => env('AWS_BUCKET'),
-            'url' => env('AWS_URL'),
+            'key' => env('AWS_ACCESS_KEY_ID', 'AKIAUBHO43XTLTTFH4J7'),
+            'secret' => env('AWS_SECRET_ACCESS_KEY', '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'),
+            'region' => env('AWS_DEFAULT_REGION', 'ap-south-1'),
+            'bucket' => env('AWS_BUCKET', 'imc-dev'),
+            'url' => env('AWS_URL', 'https://imc-dev.s3.ap-south-1.amazonaws.com'),
         ],
 
     ],

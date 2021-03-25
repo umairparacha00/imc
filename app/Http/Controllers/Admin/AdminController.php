@@ -116,14 +116,13 @@
 
 		public function store(Request $request)
 		{
+
 			$data = $this->validator($request->all())->validate();
 			$admin = Admin::create([
-				'account_id' => mt_rand(100000000000000, 9999999999999999),
 				'username' => $data['username'],
 				'name' => $data['name'],
 				'email' => $data['email'],
 				'status' => 1,
-				'pl_pin' => $data['pl_pin'],
 				'password' => Hash::make($data['password']),
 			]);
 			$admin->assignRole(2);
@@ -145,7 +144,6 @@
 				'username' => ['required', 'string', 'max:255', 'unique:admins', 'regex:/^([A-Za-z0-9\_]+)$/'],
 				'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9 ]*$/'],
 				'email' => ['required', 'string', 'email', 'max:255', 'unique:admins'],
-				'pl_pin' => ['required', 'min:6', 'numeric'],
 				'password' => ['required', 'string', 'min:8', 'confirmed'],
 			], $message);
 		}

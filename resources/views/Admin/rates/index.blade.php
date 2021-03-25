@@ -1,3 +1,4 @@
+
 @extends ('Admin.layouts.app')
 @section('style')
 	<style>

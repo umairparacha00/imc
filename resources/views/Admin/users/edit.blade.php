@@ -247,7 +247,7 @@
 							<!-- users edit media object start -->
 							<div class="media mb-4 d-flex align-items-center">
 								<a class="mr-3" href="#">
-									<img src="@if($user->user_file){{ asset('storage/'.$user->user_file) }}@else{{ 'https://ui-avatars.com/api/?size=128&background=645bd3&color=fff&name=' .  $user->name }}@endif"
+									<img src="{{ 'https://ui-avatars.com/api/?size=256&background=645bd3&color=fff&name=' .  $user->name }}"
 										 alt="users avatar"
 										 class="users-avatar-shadow rounded-circle" height="90" width="90">
 								</a>
@@ -291,6 +291,18 @@
 													<div class="help-block"></div>
 												</div>
 											</div>
+											<div class="form-group">
+												<div class="forms-control">
+													<label>User Name</label>
+													<input type="text"
+														   class="form-control @error('username') is-invalid @enderror"
+														   name="username"
+														   placeholder="User Name"
+														   value="@if($user->username !== null){{ $user->username }}@else{{ old('username') }}@endif"
+													/>
+													<div class="help-block"></div>
+												</div>
+											</div>
 											@endrole
 											<div class="form-group">
 												<div class="forms-control">
@@ -300,18 +312,6 @@
 														   name="name"
 														   placeholder="Full Name"
 														   value="@if($user->name !== null){{ $user->name }}@else{{ old('name') }}@endif"
-													/>
-													<div class="help-block"></div>
-												</div>
-											</div>
-											<div class="form-group">
-												<div class="forms-control">
-													<label>CNIC/DR/Passport</label>
-													<input type="text"
-														   class="form-control @error('cnic') is-invalid @enderror"
-														   name="cnic"
-														   placeholder="33***-*******-*"
-														   value="@if($user->cnic !== null){{ $user->cnic }}@else{{ old('cnic') }}@endif"
 													/>
 													<div class="help-block"></div>
 												</div>
@@ -401,34 +401,8 @@
 													<div class="help-block"></div>
 												</div>
 											</div>
-											<div class="form-group">
-												<div class="forms-control">
-													<label>Personal Pin</label>
-													<input type="text"
-														   class="form-control @error('pl_pin') is-invalid @enderror"
-														   name="pl_pin"
-														   placeholder="Personal Pin"
-														   value="@if($user->pl_pin !== null){{ $user->pl_pin }}@else{{ old('pl_pin') }} @endif"
-													>
-													<div class="help-block"></div>
-												</div>
-											</div>
-										
-										
 										</div>
 									<div class="col-12 col-sm-6">
-										<div class="form-group">
-											<div class="forms-control">
-												<label>User Name</label>
-												<input type="text"
-													   class="form-control @error('username') is-invalid @enderror"
-													   name="username"
-													   placeholder="User Name"
-													   value="@if($user->username !== null){{ $user->username }}@else{{ old('username') }}@endif"
-												/>
-												<div class="help-block"></div>
-											</div>
-										</div>
 										<div class="form-group">
 											<div class="forms-control">
 												<label>Address</label>

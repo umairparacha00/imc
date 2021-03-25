@@ -57,7 +57,7 @@
 	</div>
 	<section id="dashboard-analytics">
 		<div class="row">
-			<livewire:admin.user-search/>
+			@livewire('admin.user-search')
 		</div>
 	</section>
 @endsection
