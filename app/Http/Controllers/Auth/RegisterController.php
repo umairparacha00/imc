@@ -66,7 +66,8 @@
 		{
 			$message = [
 				'username.regex' => 'Username should only contain alphabets,numbers and underscores',
-				'g-recaptcha-response.required' => 'Please check the captcha'
+				'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
+				'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
 			];
 			return Validator::make($data, [
 				'username' => ['required', 'string', 'max:255', 'unique:users', 'regex:/^([A-Za-z0-9\_]+)$/'],
@@ -74,7 +75,7 @@
 				'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
 				'sponsor' => ['required', 'numeric', 'exists:users,account_id'],
 				'password' => ['required', 'string', 'min:8', 'confirmed'],
-//				'g-recaptcha-response' => 'required|captcha',
+				'g-recaptcha-response' => 'required|captcha',
 			], $message);
 		}
 
