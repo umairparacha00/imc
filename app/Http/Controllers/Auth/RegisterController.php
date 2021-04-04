@@ -11,6 +11,7 @@
 	use Illuminate\Foundation\Auth\RegistersUsers;
 	use Illuminate\Support\Facades\Hash;
 	use Illuminate\Support\Facades\Validator;
+	use Illuminate\View\View;
 
 	class RegisterController extends Controller
 	{
@@ -44,6 +45,16 @@
 			$this->middleware('guest');
 		}
 
+		/**
+		 * Show the application registration form.
+		 *
+		 * @return View
+		 */
+		public function showRegistrationForm(): View
+		{
+			$sponsor = request()->referral;
+			return view('auth.register', compact('sponsor'));
+		}
 
 		/**
 		 * Get a validator for an incoming registration request.
