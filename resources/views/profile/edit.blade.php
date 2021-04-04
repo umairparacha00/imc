@@ -50,12 +50,7 @@
                             <div class="row mt-1">
                                 @if($errors->any())
                                     @foreach ($errors->all() as $error)
-                                        <div class="alert alert-danger w-100 alert-dismissible fade show" role="alert">
-                                            {{ $error }}
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
+                                        {{! toast($error, 'error') }}
                                     @endforeach
                                 @endif
                                 <div class="col-12 col-sm-6">
@@ -63,9 +58,35 @@
                                         Personal Information</h3>
                                     <div class="form-group">
                                         <div class="forms-control">
+                                            <label>Username</label>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   placeholder="City"
+                                                   name="username"
+                                                   disabled="disabled"
+                                                   value="{{ current_user()->username }}"
+                                            >
+                                            <div class="help-block"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="forms-control">
+                                            <label>Email</label>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   placeholder="Postal code"
+                                                   name="email"
+                                                   disabled="disabled"
+                                                   value="{{ current_user()->email }}"
+                                            >
+                                            <div class="help-block"></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="forms-control">
                                             <label>Birth date</label>
                                             <input type="date"
-                                                   class="form-control"
+                                                   class="form-control @error('date_of_birth') is-invalid @enderror"
                                                    name="date_of_birth"
                                                    placeholder="Birth date"
                                                    required
@@ -78,7 +99,7 @@
                                         <div class="forms-control">
                                             <label>Mobile</label>
                                             <input type="text"
-                                                   class="form-control"
+                                                   class="form-control @error('phone') is-invalid @enderror"
                                                    name="phone"
                                                    placeholder="Mobile number here..."
                                                    required
@@ -158,7 +179,7 @@
                                         <div class="forms-control">
                                             <label>Address</label>
                                             <input type="text"
-                                                   class="form-control"
+                                                   class="form-control @error('address') is-invalid @enderror"
                                                    name="address"
                                                    placeholder="Address Line 1"
                                                    required
@@ -171,7 +192,7 @@
                                         <div class="forms-control">
                                             <label>City</label>
                                             <input type="text"
-                                                   class="form-control"
+                                                   class="form-control  @error('city') is-invalid @enderror"
                                                    name="city"
                                                    placeholder="City"
                                                    required
@@ -184,7 +205,7 @@
                                         <div class="forms-control">
                                             <label>Postal code</label>
                                             <input type="text"
-                                                   class="form-control"
+                                                   class="form-control  @error('postalcode') is-invalid @enderror"
                                                    name="postalcode"
                                                    placeholder="Postal code"
                                                    required
@@ -197,7 +218,7 @@
                                         <div class="forms-control">
                                             <label>State</label>
                                             <input type="text"
-                                                   class="form-control"
+                                                   class="form-control @error('state') is-invalid @enderror"
                                                    name="state"
                                                    placeholder="State"
                                                    required
@@ -210,7 +231,7 @@
                                         <div class="forms-control">
                                             <label>Country</label>
                                             <input type="text"
-                                                   class="form-control"
+                                                   class="form-control @error('country') is-invalid @enderror"
                                                    name="country"
                                                    placeholder="Country"
                                                    required

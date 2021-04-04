@@ -9,7 +9,7 @@
 	use Illuminate\Notifications\Notifiable;
 	use Spatie\Permission\Traits\HasRoles;
 
-	class User extends Authenticatable
+	class User extends Authenticatable implements MustVerifyEmail
 	{
 		use Notifiable, HasRoles;
 
@@ -59,6 +59,11 @@
 			return $this->hasMany(PendingMembership::class);
 		}
 
+		public function orders(): HasMany
+		{
+			return $this->hasMany(Orders::class);
+		}
+
 		public function membership($id = null)
 		{
 			$membershipId = $id ? $id : $this->membershipId->membership_id;
@@ -99,5 +104,11 @@
 		public function referrals(): HasMany
 		{
 			return $this->hasMany('App\User', 'sponsor', 'account_id');
+		}
+
+		//Overrideen sendEmailVerificationNotification implementation
+		public function sendEmailVerificationNotification()
+		{
+			$this->notify(new \App\Notifications\Auth\QueuedVerifyEmail);
 		}
 	}

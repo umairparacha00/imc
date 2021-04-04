@@ -14,7 +14,7 @@
 	class MembershipController extends Controller
 	{
 
-		public function create(Membership $membership, PaymentGateway $paymentGateway)
+		public function create(Membership $membership)
 		{
 			$memberships = $membership->all();
 			return view('purchase.membership', ['memberships' => $memberships]);

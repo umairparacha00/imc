@@ -119,7 +119,7 @@
 									<td class="text-center text-muted">{{ $pendingMembership->user->id }}</td>
 									<td class="text-center">{{ $pendingMembership->membership->name }}</td>
 									<td class="text-center">{{ $pendingMembership->paymentGateway->name }}</td>
-									<td class="text-center">{{ $pendingMembership->paymentGateway->account_number }}</td>
+									<td class="text-center">{{ $pendingMembership->paymentGateway->account_iban }}</td>
 									<td class="text-center">{{ $pendingMembership->transaction_amount }}</td>
 									<td class="text-center">{{ $pendingMembership->transaction_id }}</td>
 									<td class="text-center">

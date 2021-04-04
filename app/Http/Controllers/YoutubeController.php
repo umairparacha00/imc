@@ -44,7 +44,7 @@
 		 */
 		public function store(Request $request, FollowedLinks $followedLinks, Link $link)
 		{
-			$data = $request->validate(
+			$request->validate(
 				[
 					'image' => ['required', 'image', 'max:2070']
 				]
@@ -71,4 +71,9 @@
 			}
 		}
 
+
+		public function subscribersCreate()
+		{
+			return view('youtube.purchase.subscribers');
+		}
 	}

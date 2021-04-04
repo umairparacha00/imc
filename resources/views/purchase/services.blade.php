@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 @section('title')
-	<title>Membership - Mereow</title>
+	<title>Services - Imc</title>
 @endsection
 @section('style')
 	<style type="text/css">
@@ -56,12 +56,6 @@
             height: 36px;
             font-size: 13px;
             border-radius: 0;
-        }
-
-        .btn-primary {
-            border-color: #4839EB !important;
-            background-color: #7367F0 !important;
-            color: #FFF;
         }
 
         .form-group {
@@ -240,16 +234,16 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="new-form-container">
-				<h1>Membership</h1>
+				<h1>Services</h1>
 				<ul role="tablist" class="nav nav-tabs">
 					<li class="nav-item">
-						<a href="#membership" role="tab" data-toggle="tab" class="nav-link active">
-							<i class="fal fa-handshake mr-2"></i> Membership
+						<a href="#purchase" role="tab" data-toggle="tab" class="nav-link active">
+							<i class="fal fa-handshake mr-2"></i> Purchase
 						</a>
 					</li>
 					<li class="nav-item">
-						<a href="#help" role="tab" data-toggle="tab" class="nav-link">
-							<i class="fal fa-info-circle mr-2"></i> Help
+						<a href="#history" role="tab" data-toggle="tab" class="nav-link">
+							<i class="fal fa-history mr-2"></i> History
 						</a>
 					</li>
 				</ul>
@@ -259,48 +253,42 @@
 							{{! toast($error, 'error') }}
 						@endforeach
 					@endif
-					<div role="tabpanel" id="membership" class="tab-pane fade in show active">
-						<div class="p-m-label">
-							Current membership:
-							<span class="m-info">{{ current_user()->membership()->name }}</span>
-						</div>
+					<div role="tabpanel" id="purchase" class="tab-pane fade in show active">
 						<!---->
-						<form method="POST" action="{{ route('membership.post') }}" autocomplete="off"
-							  id="membershipPurchaseForm">
+						<form method="POST" action="{{ route('purchase.services.post') }}" autocomplete="off"
+							  id="servicesPurchaseForm">
 							@csrf
 							<div class="alert alert-info alert-dismissible fade show" role="alert">
-								<strong>Notice:</strong> Please send the payment before purchasing
+								<strong>Notice:</strong> I have transferred the payment before purchasing.
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							@livewire('payment-gateway-selector')
-							<div class="row justify-content-center align-items-center">
-								
+							<div class="row">
 								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
 									<div class="form-group">
 										<label for="memberships">
-											Memberships
+											Services
 										</label>
-										<select class="custom-select @error('name') is-invalid @enderror" name="name" id="name">
-											<option selected disabled>-- Select Membership --</option>
-											@foreach ($memberships as $membership)
-												@if (current_user()->membershipId->status == 0)
-													@if ($loop->first)
-														<option value="{{ current_user()->membership()->name }}">{{ current_user()->membership()->name . ' (' . $price . ')' }}</option>
-													@endif
-													@if(current_user()->membership()->id < $membership->id)
-														<option value="{{ $membership->name }}">{{ $membership->name . ' (' . $membership->price . ')' }}</option>
-													@endif
-												@endif
-												@if (current_user()->membershipId->status == 1)
-													@if($membership->id > current_user()->membership()->id)
-														<option value="{{ $membership->name }}">{{ $membership->name . ' (' . $membership->price . ')' }}</option>
-													@endif
-												@endif
+										<select class="custom-select @error('name') is-invalid @enderror" name="service"
+												id="service">
+											<option selected disabled>-- Select Services --</option>
+											@foreach ($services as $service)
+												<option value="{{ $service->name }}">{{ $service->name .' - Price $'. $service->price }}</option>
 											@endforeach
-										
 										</select>
+									</div>
+								</div>
+								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+									<div class="form-group">
+										<label>
+											Link
+										</label>
+										<input type="text"
+											   class="form-control @error('link') is-invalid @enderror"
+											   name="link"
+											   id="link">
 									</div>
 								</div>
 								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
@@ -308,92 +296,76 @@
 										<label>
 											Transaction Id
 										</label>
-										<input type="text" class="form-control @error('transaction_id') is-invalid @enderror" name="transaction_id"
+										<input type="text"
+											   class="form-control @error('transaction_id') is-invalid @enderror"
+											   name="transaction_id"
 											   id="transaction_id">
 									</div>
 								</div>
-								<div class="col-xl-4 col-lg-4 col-md-4 col-sm-12"></div>
-								<div class="col-sm-12 col-md-4">
-									<div class="d-flex justify-content-between">
-										<div>
-											<button type="button" id="modal-btn2" style="display:none"
-													class="btn btn-default">
-												Upgrade
-											</button>
+								<div class="col-sm-12 col-xl-12 col-lg-12 col-md-12">
+									<div class="d-flex justify-content-between mb-3">
+										<div class="position-relative">
+										
 										</div>
 										<div class="btn-actions-pane-right">
-											<button type="button" id="modal-btn" class="btn btn-default">
-												Purchase
+											<button type="button" class="btn btn-lg btn-primary" id="modal-btn" >Purchase
 											</button>
 										</div>
 									</div>
 								</div>
 							</div>
-						
 						</form>
 					</div>
-					<div role="tabpanel" id="help" class="tab-pane fade">
-						<div class="row">
-							<div class="col-md-12">
+						<div role="tabpanel" id="history" class="tab-pane fade">
+							<div role="tabpanel" id="history" class="tab-pane fade active show">
 								<div class="table-responsive">
-									<table class="table m-p-748">
+									<table class="align-middle mb-0 table table-striped table-hover">
 										<thead>
 										<tr>
-											<th>Membership</th>
-											<th>Referral Level</th>
-											<th>Direct Bonus</th>
-											<th>Indirect Bonus</th>
-											<th>Per Subscriber</th>
+											<th>ID</th>
+											<th>Service</th>
+											<th>Gateway</th>
 											<th>Price</th>
+											<th>Status</th>
+											<th>Delivery Date</th>
+											<th>Created At</th>
 										</tr>
 										</thead>
 										<tbody>
-										<tr>
-											<th>Starter</th>
-											<td>0</td>
-											<td>0</td>
-											<td>0</td>
-											<td>0.02</td>
-											<td>0</td>
-										</tr>
-										<tr>
-											<th>Joining</th>
-											<td>1</td>
-											<td>1</td>
-											<td></td>
-											<td>0.02</td>
-											<td>0</td>
-										</tr>
-										<tr>
-											<th>Basic</th>
-											<td>0</td>
-											<td>0</td>
-											<td>0</td>
-											<td>0.02</td>
-											<td>0</td>
-										</tr>
-										<tr>
-											<th>Silver</th>
-											<td>0</td>
-											<td>0</td>
-											<td>0</td>
-											<td>0.02</td>
-											<td>0</td>
-										</tr>
-										<tr>
-											<th>Gold</th>
-											<td>0</td>
-											<td>0</td>
-											<td>0</td>
-											<td>0.02</td>
-											<td>0</td>
-										</tr>
+										@foreach ($orders as $order)
+											<tr>
+												<td>{{ $order->id }}</td>
+												<td>{{ \Illuminate\Support\Str::ucfirst(str_replace('_', ' ', $order->service->name)) }}</td>
+												<td>{{ $order->paymentGateway->name }}</td>
+												<td>{{ $order->service->price }}</td>
+												<td>
+													<div class="badge
+													@if ($order->status === 0)
+															badge-info
+@elseif($order->status === 1)
+															badge-success
+@endif"
+													>
+														@if ($order->status === 0)
+															Pending
+														@elseif($order->status === 2)
+															Approved
+														@elseif($order->status === 3)
+															Under Working
+														@elseif($order->status === 1)
+															Completed
+														@endif
+													</div>
+												</td>
+												<td>{{ Carbon\Carbon::parse($order->delivery_date)->format('d M Y') }}</td>
+												<td>{{ Carbon\Carbon::parse($order->created_at)->format('d M Y') }}</td>
+											</tr>
+										@endforeach
 										</tbody>
 									</table>
 								</div>
 							</div>
 						</div>
-					</div>
 				</div>
 			
 			</div>
@@ -402,17 +374,18 @@
 @endsection
 @section ('page-script')
 	<script>
-        $("#membershipPurchaseForm").on('keydown', (e) => {
+        $("#servicesPurchaseForm").on('keydown', (e) => {
             if (e.keyCode === 13) {
                 e.preventDefault();
-                axios.post('/getMembershipPrice', {
-                    "name": $("#name").val(),
+                axios.post('/getServicePrice', {
+                    "service": $("#service").val(),
                     "transaction_id": $("#transaction_id").val(),
-					"payment_gateway_id": $("#payment_gateway_id").val()
+                    "link": $("#link").val(),
+                    "payment_gateway_id": $("#payment_gateway_id").val()
                 }).then(function (response) {
                     Swal.fire({
-						title: 'Confirm Purchase',
-                        text: 'Are you sure you want to proceed to update to ' + response.data.name + '. its prices is (' + response.data.price + ')?',
+                        title: 'Confirm Purchase',
+                        text: 'Are you sure you want to purchase ' + response.data.name + '. its prices is (' + response.data.price + '$)?',
                         position: "top",
                         showCancelButton: true,
                         confirmButtonColor: '#218838',
@@ -420,8 +393,7 @@
                         confirmButtonText: 'Proceed!'
                     }).then((result) => {
                         if (result.value) {
-                            $("#membershipPurchaseForm").submit()
-                            console.log('submitted')
+                            $("#servicesPurchaseForm").submit()
                         }
                     })
                 }).catch((error) => {
@@ -433,7 +405,7 @@
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
-                        timer: 3000,
+                        timer: 5000,
                         timerProgressBar: false,
                         onOpen: (toast) => {
                             toast.addEventListener('mouseenter', Swal.stopTimer)
@@ -448,14 +420,15 @@
             }
         })
         $("#modal-btn").on('click', function () {
-            axios.post('/getMembershipPrice', {
-                "name": $("#name").val(),
+            axios.post('/getServicePrice', {
+                "service": $("#service").val(),
                 "transaction_id": $("#transaction_id").val(),
+                "link": $("#link").val(),
                 "payment_gateway_id": $("#payment_gateway_id").val()
             }).then(function (response) {
                 Swal.fire({
-                    title: 'Confirm Purchase',
-                    text: 'Are you sure you want to proceed to update to ' + response.data.name + '. its prices is (' + response.data.price + ')?',
+					title: 'Confirm Purchase',
+                    text: 'Are you sure you want to purchase ' + response.data.name + '. its prices is (' + response.data.price + '$)?',
                     position: "top",
                     showCancelButton: true,
                     confirmButtonColor: '#218838',
@@ -463,8 +436,7 @@
                     confirmButtonText: 'Proceed!'
                 }).then((result) => {
                     if (result.value) {
-                        $("#membershipPurchaseForm").submit()
-                        console.log('submitted')
+                        $("#servicesPurchaseForm").submit()
                     }
                 })
             }).catch((error) => {
@@ -476,7 +448,7 @@
                     toast: true,
                     position: 'top-end',
                     showConfirmButton: false,
-                    timer: 3000,
+                    timer: 5000,
                     timerProgressBar: false,
                     onOpen: (toast) => {
                         toast.addEventListener('mouseenter', Swal.stopTimer)

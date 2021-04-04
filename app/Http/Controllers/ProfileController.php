@@ -32,6 +32,12 @@
 		public function update(Request $request, User $user): RedirectResponse
 		{
 			if (current_user()->id === $user['id']) {
+				if ($request['username']) {
+					return back()->with('toast_error', 'Cannot Update Username');
+				}
+				if ($request['email']) {
+					return back()->with('toast_error', 'Cannot Update Email');
+				}
 				$data = $this->validator($request->all())->validate();
 				$user->update($data);
 				return redirect(route('profile'))->withToastSuccess('Updated Successfully!');

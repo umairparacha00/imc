@@ -72,6 +72,7 @@
 			$totalDirectCommission = $event->totalAmount * $percentage / 100;
 
 			$newGroupBalance = $userBalance->group_balance + $totalDirectCommission;
+			$newMainBalance = $userBalance->main_balance + $totalDirectCommission;
 			// Transaction for Direct Commission
 
 			(new Transaction)->createTransaction($sponsor->id,
@@ -80,10 +81,21 @@
 				$newGroupBalance,
 				$userBalance->group_balance,
 				'Commission received on purchase of Membership by ' . $event->user->username . ' from level: ' . $level,
-				'group_balance'
+				'Group Balance'
+			);
+
+			(new Transaction)->createTransaction($sponsor->id,
+				'Credit',
+				$totalDirectCommission,
+				$newMainBalance,
+				$userBalance->main_balance,
+				'Commission received on purchase of Membership by ' . $event->user->username . ' from level: ' . $level,
+				'Main Balance'
 			);
 
 			// Update the Group Balance
 			(new Balance)->updateGroupBalance($sponsor->id, $newGroupBalance);
+			// Update the Main Balance
+			(new Balance)->updateMainBalance($sponsor->id, $newMainBalance);
 		}
 	}

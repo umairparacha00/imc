@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserMembership extends Model
 {
+	protected $guarded = [];
 	public function upgradeMembership($user_id, $membershipId, $months)
 	{
 		UserMembership::where('user_id', $user_id)->update([

@@ -103,10 +103,10 @@
 	<div class="row">
 		<div class="col-md-12">
 			<div class="new-form-container">
-				<h1>Create Rate</h1>
+				<h1>Add Link</h1>
 				<div class="tab-content">
 					<div class="fadeIn show">
-						<form method="POST" action="{{ route('rates.store') }}">
+						<form method="POST" action="{{ route('links.store') }}">
 							@csrf
 							<div class="row mt-1">
 								@if($errors->any())
@@ -117,12 +117,13 @@
 								<div class="col-md-4 col-sm-12">
 									<div class="form-group">
 										<div class="forms-control">
-											<label>Name</label>
-											<input type="text"
-												   class="form-control @error('name') is-invalid @enderror"
-												   name="name"
-												   placeholder="Rate Name"
-											/>
+											<label>Link Type</label>
+											<select class="custom-select @error('link_type') is-invalid @enderror" name="link_type">
+												<option selected>-- Select Type --</option>
+												<option value="{{ 'Youtube' }}">{{ 'Youtube' }}</option>
+												<option value="{{ 'Instagram' }}">{{ 'Instagram' }}</option>
+												<option value="{{ 'Facebook' }}">{{ 'Facebook' }}</option>
+											</select>
 											<div class="help-block"></div>
 										</div>
 									</div>
@@ -130,18 +131,19 @@
 								<div class="col-md-4 col-sm-12">
 									<div class="form-group">
 										<div class="forms-control">
-											<label>Rate</label>
+											<label>Link</label>
 											<input type="text"
-												   class="form-control @error('rate') is-invalid @enderror"
-												   name="rate"
-												   placeholder="Rate"
+												   class="form-control @error('link') is-invalid @enderror"
+												   name="link"
+												   placeholder="Link"
+												   value="{{ old('link') }}"
 											/>
 											<div class="help-block"></div>
 										</div>
 									</div>
 								</div>
 								<div class="col-md-4 col-sm-12 pt-4">
-									<button type="submit" class="btn btn-primary">Create
+									<button type="submit" class="btn btn-primary">Add
 									</button>
 								</div>
 							</div>

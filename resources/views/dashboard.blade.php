@@ -280,8 +280,8 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Earning Balance</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ number_format(current_user()->balance->main_balance, 6 , '.', ',') }}</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">Earning Balance</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><i class="fal fa-dollar-sign font-weight-bold text-gray-800 mr-2"></i>{{ number_format(current_user()->balance->main_balance, 6 , '.', ',') }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fal fa-badge-dollar fa-2x text-gray-300"></i>
@@ -295,8 +295,8 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Group Earning</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ number_format(current_user()->balance->group_balance, 6 , '.', ',') }}</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">Group Earning</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800"><i class="fal fa-dollar-sign font-weight-bold text-gray-800 mr-2"></i>{{ number_format(current_user()->balance->group_balance, 6 , '.', ',') }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fal fa-badge-dollar fa-2x text-gray-300"></i>
@@ -310,7 +310,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Direct Members</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">Direct Members</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ count(current_user()->referrals) }}</div>
                             </div>
                             <div class="col-auto">
@@ -325,7 +325,7 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Indirect Members</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">Indirect Members</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
                             </div>
                             <div class="col-auto">
@@ -340,11 +340,11 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Videos I watched</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">475</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">Profiles I Followed</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $profilesFollowed }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fa fa-film fa-2x text-gray-300"></i>
+                                <i class="fal fa-user fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>
@@ -355,11 +355,11 @@
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Channels I Subscribed</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-2">Channels I Subscribed</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $subscribedChannels }}</div>
                             </div>
                             <div class="col-auto">
-                                <i class="fa fa-film fa-2x text-gray-300"></i>
+                                <i class="fal fa-bell fa-2x text-gray-300"></i>
                             </div>
                         </div>
                     </div>

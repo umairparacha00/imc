@@ -24,7 +24,7 @@
 		Route::get('/admin/login', 'Admin\AdminController@showLoginForm');
 	});
 
-	Auth::routes();
+	Auth::routes(['verify' => true]);
 	Route::prefix('admin')->namespace('Admin')->group(function () {
 		Route::post('/login', 'AdminController@login');
 		Route::middleware('admin')->group(function () {
@@ -52,6 +52,13 @@
 				Route::put('{pending_memberships}/reject', 'UserMembershipController@reject')->name('memberships.reject');
 			});
 			Route::resource('memberships', 'MembershipController');
+
+			Route::prefix('orders')->group(function () {
+				Route::get('pending', 'OrdersController@pending')->name('orders.pending');
+				Route::put('{order}/approve', 'OrdersController@approve')->name('orders.approve');
+				Route::put('{order}/reject', 'OrdersController@reject')->name('orders.reject');
+			});
+			Route::resource('orders', 'OrdersController');
 			Route::prefix('links')->group(function () {
 				Route::get('pending', 'LinkController@pending')->name('links.pending');
 				Route::put('{link}/approve', 'LinkController@approve')->name('links.approve');
@@ -103,7 +110,7 @@
 			})->where('query', '.*');
 		});
 	});
-	Route::middleware('auth')->group(function () {
+	Route::middleware(['auth', 'verified'])->group(function () {
 		Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 		Route::get('/profile', 'ProfileController@edit')->name('profile');
 		Route::patch('/profile/{user}', 'ProfileController@update');
@@ -138,9 +145,12 @@
 		});
 		Route::prefix('purchase')->group(function () {
 			Route::get('/membership', 'MembershipController@create')->name('membership.create');
+			Route::get('/services', 'PurchaseController@create')->name('purchase.services.create');
 			Route::post('/membership', 'MembershipController@store')->name('membership.post');
+			Route::post('/services', 'PurchaseController@store')->name('purchase.services.post');
 		});
 		Route::post('/getMembershipPrice', 'MembershipController@getMembershipPrice');
+		Route::post('/getServicePrice', 'PurchaseController@getServicePrice');
 		Route::any('{query}',
 			function () {
 				return redirect('/dashboard');

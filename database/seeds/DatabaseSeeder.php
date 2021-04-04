@@ -122,6 +122,7 @@
 					AdminSeeder::class,
 					UserSeeder::class,
 					LinkSeeder::class,
+					ServicesSeeder::class,
 				]
 			);
 		}
