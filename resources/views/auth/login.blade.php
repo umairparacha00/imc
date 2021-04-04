@@ -58,18 +58,33 @@
 								<a href="{{ route('password.request') }}">Forgot Password?</a>
 							</div>
 						</div>
-						<div class="buttons">
-							<div class="plk_09nkj34">
-								<button type="submit" class="btn text-uppercase">
-									Login
-								</button>
-							</div>
-							<div class="re-button">
-								<a href="{{ url('register') }}" class="btn text-uppercase"
-								>Register</a
-								>
+						<div class="co-12">
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="plk_09nkj34">
+									<button type="submit" class="btn text-uppercase">
+										Login
+									</button>
+								</div>
+								<div class="re-button">
+									<a href="{{ url('register') }}" class="btn text-uppercase"
+									>Register</a
+									>
+								</div>
 							</div>
 						</div>
+						
+{{--						<div class="buttons">--}}
+{{--							<div class="plk_09nkj34">--}}
+{{--								<button type="submit" class="btn text-uppercase">--}}
+{{--									Login--}}
+{{--								</button>--}}
+{{--							</div>--}}
+{{--							<div class="re-button">--}}
+{{--								<a href="{{ url('register') }}" class="btn text-uppercase"--}}
+{{--								>Register</a--}}
+{{--								>--}}
+{{--							</div>--}}
+{{--						</div>--}}
 					</form>
 				</div>
 			</div>

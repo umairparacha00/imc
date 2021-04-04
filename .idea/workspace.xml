@@ -5,49 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5ed9b28-c5dd-4b0a-b34b-43dfb02ae33d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/OrdersController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerifiesUsersEmails.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/ServicesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Livewire/PurchasingSelector.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Notifications/Auth/QueuedVerifyEmail.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Orders.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/OrdersFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/factories/ServicesFactory.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_30_120633_create_services_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_30_122413_create_orders_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2021_03_31_190508_create_jobs_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/OrdersSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/ServicesSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/orders/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/orders/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/orders/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/orders/pending.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/orders/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/livewire/purchasing-selector.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/purchase/services.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/imc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/imc.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserMembershipController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserMembershipController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthenticationForUsers.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/AuthenticationForUsers.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MembershipController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MembershipController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FacebookController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FacebookController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/InstagramController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/InstagramController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/YoutubeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/YoutubeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Listeners/MembershipCommission.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Listeners/MembershipCommission.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/UserMembership.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UserMembership.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeds/UserSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UserSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/memberships/pending.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/memberships/pending.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/rates/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/rates/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/assets/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livewire/payment-gateway-selector.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/payment-gateway-selector.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/profile/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/purchase/membership.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchase/membership.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/purchase/services.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/purchase/services.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/youtube/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/youtube/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +289,7 @@
       <workItem from="1617187871065" duration="954000" />
       <workItem from="1617197640969" duration="5893000" />
       <workItem from="1617428094167" duration="5066000" />
-      <workItem from="1617468668350" duration="4522000" />
+      <workItem from="1617468668350" duration="15615000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1614939594395</created>
@@ -344,7 +319,28 @@
       <option name="project" value="LOCAL" />
       <updated>1617524758544</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="sponsor added">
+      <created>1617524932185</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1617524932185</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added">
+      <created>1617525117776</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1617525117776</updated>
+    </task>
+    <task id="LOCAL-00007" summary="RegisterController.php added">
+      <created>1617525929231</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1617525929231</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +364,10 @@
     <MESSAGE value="user And Admin Panel added" />
     <MESSAGE value="A lot of things added" />
     <MESSAGE value="captcha added" />
-    <option name="LAST_COMMIT_MESSAGE" value="captcha added" />
+    <MESSAGE value="sponsor added" />
+    <MESSAGE value="added" />
+    <MESSAGE value="RegisterController.php added" />
+    <option name="LAST_COMMIT_MESSAGE" value="RegisterController.php added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

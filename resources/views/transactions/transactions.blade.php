@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 @section('title')
-    <title>Transactions - Mereow</title>
+    <title>Transactions - Amlaen</title>
 @endsection
 @section('style')
     <style type="text/css">

@@ -153,6 +153,11 @@
 		 */
 		protected function authenticated(Request $request, $user)
 		{
+			$user->update(
+				[
+					'last_logged_at' => now()
+				]
+			);
 			if ($user->status == 0) {
 
 				$message = 'Please activate your account';

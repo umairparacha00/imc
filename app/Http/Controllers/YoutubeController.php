@@ -19,7 +19,7 @@
 		 */
 		public function index()
 		{
-			$links = Link::where('link_type', 'Youtube')
+			$links = Link::where('link_type', 'Youtube')->whereDate('created_at', today())
 				->orderBy('id', 'asc')->paginate(15);
 			return view('youtube.index', ['links' => $links]);
 		}

@@ -9,6 +9,7 @@
 	use Carbon\Carbon;
 	use Illuminate\Http\Request;
 	use Illuminate\Http\Response;
+	use Illuminate\Support\Facades\DB;
 	use Illuminate\View\View;
 
 	class UserMembershipController extends Controller
@@ -93,18 +94,20 @@
 
 		public function approve($id)
 		{
-			$pendingMembership = PendingMembership::where('id', $id)->first();
-			$user = User::findOrFail($pendingMembership->user_id);
-			$user->update(['purchasing_status' => 'can']);
-			$pendingMembership->update([
-				'status' => 1
-			]);
-			$user->membershipId()->update([
-				'membership_id' => $pendingMembership->membership_id,
-				'expires_at' => Carbon::today()->addYear(),
-				'status' => 1,
-			]);
-			event(new MembershipPurchased($user->sponsor, $pendingMembership->transaction_amount, $user));
+			DB::transaction(function () use ($id) {
+				$pendingMembership = PendingMembership::where('id', $id)->first();
+				$user = User::findOrFail($pendingMembership->user_id);
+				$user->update(['purchasing_status' => 'can']);
+				$pendingMembership->update([
+					'status' => 1
+				]);
+				$user->membershipId()->update([
+					'membership_id' => $pendingMembership->membership_id,
+					'expires_at' => Carbon::today()->addYear(),
+					'status' => 1,
+				]);
+				event(new MembershipPurchased($user->sponsor, $pendingMembership->transaction_amount, $user));
+			});
 			return back()->withToastSuccess('Membership approved successfully!');
 		}
 

@@ -128,19 +128,12 @@ svg {
 .buttons {
   display: inline;
 }
-.plk_09nkj34 {
-  float: left;
-}
-.re-button {
-  float: right;
-}
 .plk_09nkj34 .btn {
   background: linear-gradient(
     118deg,
     rgba(115, 103, 240, 1),
     rgba(115, 103, 240, 0.7)
   );
-  padding: 10px 40px;
   border-radius: 0;
   border: none;
   color: #fff;
@@ -169,7 +162,6 @@ svg {
 }
 .re-button .btn {
   border: 1px solid var(--secondary-color);
-  padding: 10px 40px;
   border-radius: 0;
   color: var(--secondary-color);
   font-size: 15px;
@@ -189,7 +181,7 @@ svg {
 }
 .login-form .plk_08w03 .plk_08w009 {
   float: left;
-  min-width: 50%;
+  min-width: 40%;
 }
 .plk_08w009 a,
 .plk_08w009 span {
@@ -197,25 +189,13 @@ svg {
 }
 .plk_09820b {
   float: right;
-  min-width: 50%;
+  min-width: 60%;
 }
 .plk_08w03 .plk_09820b,
 .plk_08w03 .plk_09820b a {
   color: #555;
 }
 
-
-/* Responsive Css */
-/* @media (max-width: 241px) {
-  .login-form .plk_08w03 .plk_09820b {
-    text-align: right !important;
-    width: 100%;
-  }
-  .login-form .plk_08w03 .plk_08w009 {
-    text-align: left !important;
-    width: 100%;
-  }
-} */
 @media (max-width: 240px) {
   .login-form .plk_08w03 .plk_09820b,
   .login-form .plk_08w03 .plk_08w009 {

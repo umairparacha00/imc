@@ -25,7 +25,7 @@
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
 			<div class="logo-src">
-				<h2>Imc</h2>
+				<h2>Amlaen</h2>
 			</div>
 			<div class="header__pane ml-auto">
 				<div>
@@ -108,7 +108,7 @@
 		<div class="app-sidebar sidebar-shadow">
 			<div class="app-header__logo">
 				<div class="logo-src">
-					<h2>Imc</h2>
+					<h2>Amlaen</h2>
 				</div>
 				<div class="header__pane ml-auto">
 					<div>

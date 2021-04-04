@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 @section('title')
-	<title>Services - Imc</title>
+	<title>Services - Amlaen</title>
 @endsection
 @section('style')
 	<style type="text/css">
@@ -259,7 +259,7 @@
 							  id="servicesPurchaseForm">
 							@csrf
 							<div class="alert alert-info alert-dismissible fade show" role="alert">
-								<strong>Notice:</strong> I have transferred the payment before purchasing.
+								<strong>Notice:</strong> You have to send payment before purchasing.
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>

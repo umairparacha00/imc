@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 @section('title')
-    <title>Change Password - Imc</title>
+    <title>Change Password - Amlaen</title>
 @endsection
 @section('style')
 <style type="text/css">

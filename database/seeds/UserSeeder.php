@@ -21,7 +21,7 @@
 
 			ini_set('memory_limit', '2048M');//allocate memory
 			DB::disableQueryLog();//disable log
-			factory(User::class, 1)->create()->each(function ($user) {
+			factory(User::class, 100)->create()->each(function ($user) {
 
 				// User Role Seeder
 				factory(ModelHasRole::class)->create(['model_id' => $user->id]);

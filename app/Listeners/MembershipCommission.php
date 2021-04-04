@@ -8,6 +8,7 @@
 	use App\Balance;
 	use App\Events\MembershipPurchased;
 	use App\UserMembership;
+	use Illuminate\Support\Facades\DB;
 
 	class MembershipCommission
 	{
@@ -34,7 +35,9 @@
 			$percentage = $directCommissionPercentage->rate;
 			// Get The User
 			$sponsor = User::where('account_id', $sponsor_account_id)->first();
-			$this->commissionProcesses($event, $sponsor, $percentage, 1);
+			if ($sponsor->membershipId->membership_id > 1) {
+				$this->commissionProcesses($event, $sponsor, $percentage, 1);
+			}
 
 			// Action for Indirect Commission
 			$inDirectSponsor = User::where('account_id', $sponsor->sponsor)->first();
@@ -46,12 +49,34 @@
 
 			if ($event->user->membershipId->status == 1) {
 				$x = 2;
-				while ($x <= 7) {
-					if ($x > 1 && $x <= 7) {
+				while ($x <= 8) {
+					if ($x > 1 && $x <= 2) {
 						if ($inDirectSponsor->sponsor == 1000000000000) {
 							break;
 						} else {
 							if ($userMembershipId > 1) {
+								$this->commissionProcesses($event, $inDirectSponsor, $percentage, $x);
+							}
+							$inDirectSponsor = User::where('account_id', $inDirectSponsor->sponsor)->first();
+							$userMembership = UserMembership::where('user_id', $inDirectSponsor->id)->first();
+							$userMembershipId = $userMembership->membership_id;
+						}
+					} elseif ($x > 2 && $x <= 4) {
+						if ($inDirectSponsor->sponsor == 1000000000000) {
+							break;
+						} else {
+							if ($userMembershipId > 2) {
+								$this->commissionProcesses($event, $inDirectSponsor, $percentage, $x);
+							}
+							$inDirectSponsor = User::where('account_id', $inDirectSponsor->sponsor)->first();
+							$userMembership = UserMembership::where('user_id', $inDirectSponsor->id)->first();
+							$userMembershipId = $userMembership->membership_id;
+						}
+					} elseif ($x > 4 && $x <= 8) {
+						if ($inDirectSponsor->sponsor == 1000000000000) {
+							break;
+						} else {
+							if ($userMembershipId > 3) {
 								$this->commissionProcesses($event, $inDirectSponsor, $percentage, $x);
 							}
 							$inDirectSponsor = User::where('account_id', $inDirectSponsor->sponsor)->first();
@@ -75,27 +100,29 @@
 			$newMainBalance = $userBalance->main_balance + $totalDirectCommission;
 			// Transaction for Direct Commission
 
-			(new Transaction)->createTransaction($sponsor->id,
-				'Credit',
-				$totalDirectCommission,
-				$newGroupBalance,
-				$userBalance->group_balance,
-				'Commission received on purchase of Membership by ' . $event->user->username . ' from level: ' . $level,
-				'Group Balance'
-			);
+			DB::transaction(function () use ($sponsor, $totalDirectCommission, $newGroupBalance, $userBalance, $event, $level, $newMainBalance) {
+				(new Transaction)->createTransaction($sponsor->id,
+					'Credit',
+					$totalDirectCommission,
+					$newGroupBalance,
+					$userBalance->group_balance,
+					'Commission received on purchase of Membership by ' . $event->user->username . ' from level: ' . $level,
+					'Group Balance'
+				);
 
-			(new Transaction)->createTransaction($sponsor->id,
-				'Credit',
-				$totalDirectCommission,
-				$newMainBalance,
-				$userBalance->main_balance,
-				'Commission received on purchase of Membership by ' . $event->user->username . ' from level: ' . $level,
-				'Main Balance'
-			);
+				(new Transaction)->createTransaction($sponsor->id,
+					'Credit',
+					$totalDirectCommission,
+					$newMainBalance,
+					$userBalance->main_balance,
+					'Commission received on purchase of Membership by ' . $event->user->username . ' from level: ' . $level,
+					'Main Balance'
+				);
 
-			// Update the Group Balance
-			(new Balance)->updateGroupBalance($sponsor->id, $newGroupBalance);
-			// Update the Main Balance
-			(new Balance)->updateMainBalance($sponsor->id, $newMainBalance);
+				// Update the Group Balance
+				(new Balance)->updateGroupBalance($sponsor->id, $newGroupBalance);
+				// Update the Main Balance
+				(new Balance)->updateMainBalance($sponsor->id, $newMainBalance);
+			});
 		}
 	}

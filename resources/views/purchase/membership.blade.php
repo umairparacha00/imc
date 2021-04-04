@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 @section('title')
-	<title>Membership - Mereow</title>
+	<title>Membership - Amlaen</title>
 @endsection
 @section('style')
 	<style type="text/css">
@@ -269,7 +269,7 @@
 							  id="membershipPurchaseForm">
 							@csrf
 							<div class="alert alert-info alert-dismissible fade show" role="alert">
-								<strong>Notice:</strong> Please send the payment before purchasing
+								<strong>Notice:</strong> You have to send payment before purchasing.
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -341,8 +341,8 @@
 										<tr>
 											<th>Membership</th>
 											<th>Referral Level</th>
-											<th>Direct Bonus</th>
-											<th>Indirect Bonus</th>
+											<th>Per FB Following</th>
+											<th>Per Instagram Following</th>
 											<th>Per Subscriber</th>
 											<th>Price</th>
 										</tr>
@@ -353,40 +353,40 @@
 											<td>0</td>
 											<td>0</td>
 											<td>0</td>
-											<td>0.02</td>
+											<td>0</td>
 											<td>0</td>
 										</tr>
 										<tr>
 											<th>Joining</th>
 											<td>1</td>
-											<td>1</td>
-											<td></td>
-											<td>0.02</td>
-											<td>0</td>
+											<td>0.0020$</td>
+											<td>0.0020$</td>
+											<td>0.0033$</td>
+											<td>3$</td>
 										</tr>
 										<tr>
 											<th>Basic</th>
-											<td>0</td>
-											<td>0</td>
-											<td>0</td>
-											<td>0.02</td>
-											<td>0</td>
+											<td>2</td>
+											<td>0.0033$</td>
+											<td>0.0033$</td>
+											<td>0.0053$</td>
+											<td>7$</td>
 										</tr>
 										<tr>
 											<th>Silver</th>
-											<td>0</td>
-											<td>0</td>
-											<td>0</td>
-											<td>0.02</td>
-											<td>0</td>
+											<td>4</td>
+											<td>0.0053$</td>
+											<td>0.0053$</td>
+											<td>0.0066$</td>
+											<td>14$</td>
 										</tr>
 										<tr>
 											<th>Gold</th>
-											<td>0</td>
-											<td>0</td>
-											<td>0</td>
-											<td>0.02</td>
-											<td>0</td>
+											<td>7</td>
+											<td>0.0066$</td>
+											<td>0.0066$</td>
+											<td>0.0098$</td>
+											<td>30$</td>
 										</tr>
 										</tbody>
 									</table>

@@ -19,7 +19,7 @@
 		 */
 		public function index()
 		{
-			$links = Link::where('link_type', 'Instagram')
+			$links = Link::where('link_type', 'Instagram')->whereDate('created_at', today())
 				->orderBy('id', 'asc')->paginate(15);
 			return view('instagram.index', ['links' => $links]);
 		}

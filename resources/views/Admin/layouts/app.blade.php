@@ -25,7 +25,7 @@
 	<div class="app-header header-shadow">
 		<div class="app-header__logo">
 			<div class="logo-src">
-				<h2>Imc</h2>
+				<h2>Amlaen</h2>
 			</div>
 			<div class="header__pane ml-auto">
 				<div>
@@ -78,10 +78,7 @@
 								<div class="btn-group">
 									<a class="p-0 btn d-flex align-items-center">
 										<img width="42" height="42" class="rounded-circle"
-											 src="@if(current_admin()->user_file)
-											 {{ 'https://umair.s3.ap-south-1.amazonaws.com/users/profile/images/'. current_admin()->user_file }}
-											 @else{{ 'https://ui-avatars.com/api/?background=645bd3&color=fff&name=' . current_admin()->name }}
-											 @endif"
+											 src="{{ 'https://ui-avatars.com/api/?background=645bd3&color=fff&name=' . current_admin()->name }}"
 											 alt="User Avatar">
 									</a>
 								</div>
@@ -96,7 +93,7 @@
 		<div class="app-sidebar sidebar-shadow">
 			<div class="app-header__logo">
 				<div class="logo-src">
-					<h2>Imc</h2>
+					<h2>Amlaen</h2>
 				</div>
 				<div class="header__pane ml-auto">
 					<div>

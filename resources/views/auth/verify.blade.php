@@ -60,7 +60,7 @@
 
 @extends('layouts.guest_2')
 @section('meta-data')
-    <title>Verify Email - Imc.com</title>
+    <title>Verify Email - Amlaen.co</title>
     <meta
             name="description"
             content="Imc is one of the top advertisers which provides numerous options to boots and enhance your Viewership and Branding."

@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 @section('title')
-	<title>Share Balance - Mereow</title>
+	<title>Withdraw Balance - Amlaen</title>
 @endsection
 @section('style')
 	<style type="text/css">

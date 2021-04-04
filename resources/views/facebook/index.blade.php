@@ -1,4 +1,7 @@
 @extends ('layouts.app')
+@section('title')
+	<title>Facebook Profile Links - Amlaen</title>
+@endsection
 @section('style')
 	<style type="text/css">
         .new-form-container .tab-content {

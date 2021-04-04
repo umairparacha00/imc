@@ -1,6 +1,6 @@
 @extends ('layouts.app')
 @section('title')
-	<title>Direct Referrals - Mereow</title>
+	<title>Direct Referrals - Amlaen</title>
 @endsection
 @section('style')
 	<style type="text/css">

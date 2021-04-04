@@ -19,7 +19,7 @@ class FacebookController extends Controller
 	 */
 	public function index()
 	{
-		$links = Link::where('link_type', 'Facebook')
+		$links = Link::where('link_type', 'Facebook')->whereDate('created_at', today())
 			->orderBy('id', 'asc')->paginate(15);
 		return view('facebook.index', ['links' => $links]);
 	}

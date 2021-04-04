@@ -1,7 +1,7 @@
 @extends ('layouts.app')
 
 @section('title')
-    <title>Dashboard - Mereow</title>
+    <title>Dashboard - Amlaen</title>
 @endsection
 @section('style')
     <style>
