@@ -1,4 +1,7 @@
 @extends('layouts.guest')
+@section('meta')
+  <title>Services - Amlaen Digital Marketing Agency</title>
+@endsection
 @section('style')
   <link rel="stylesheet" href="assets/css/services.css" />
 @endsection

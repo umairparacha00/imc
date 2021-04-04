@@ -164,20 +164,6 @@
 										Channel Links
 									</a>
 								</li>
-								<li>
-									<a href="{{ url('/purchase/membership') }}"
-									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Purchase Watchtime
-									</a>
-								</li>
-								<li>
-									<a href="{{ url('/purchase/membership') }}"
-									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Purchase Subscribers
-									</a>
-								</li>
 							</ul>
 						</li>
 						<li class="{{ Request::is('instagram*') ?  'mm-active' : '' }}">
@@ -194,13 +180,6 @@
 										Profile Links
 									</a>
 								</li>
-								<li>
-									<a href="{{ route('instagram.profiles.index') }}"
-									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Purchase Followers
-									</a>
-								</li>
 							</ul>
 						</li>
 						<li class="{{ Request::is('facebook*') ?  'mm-active' : '' }}">
@@ -215,13 +194,6 @@
 									   class="{{ Request::path() === 'facebook/pages' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>
 										Page Links
-									</a>
-								</li>
-								<li>
-									<a href="{{ url('/purchase/membership') }}"
-									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Purchase Followers
 									</a>
 								</li>
 							</ul>
@@ -287,10 +259,17 @@
 							</a>
 							<ul>
 								<li>
-									<a href="{{ url('/purchase/membership') }}"
+									<a href="{{ route('membership.create') }}"
 									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6">
 										</i>Membership
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('purchase.services.create') }}"
+									   class="mb-0 {{ Request::path() === 'purchase/services' ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Services
 									</a>
 								</li>
 							</ul>

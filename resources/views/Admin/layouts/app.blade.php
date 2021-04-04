@@ -250,6 +250,29 @@
 								</li>
 							</ul>
 						</li>
+						<li class="{{ Request::is('admin/orders*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-shopping-cart"></i>
+								Orders
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('orders.index') }}"
+									   class="mb-0 {{ Request::is('admin/orders') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('orders.pending') }}"
+									   class="mb-0 {{ Request::is('admin/orders/pending') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Pending
+									</a>
+								</li>
+							</ul>
+						</li>
 						<li class="{{ Request::is('admin/payment-gateway*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-th-large"></i>

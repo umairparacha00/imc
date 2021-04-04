@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Imc Social Media Digital Marketing Agency</title>
+    @yield('meta')
     <!-- Bootstrap Css File -->
     <link rel="stylesheet" href="{{ asset('assets/css/main.css')}}" />
     <!-- Font Awesome -->
@@ -26,10 +26,10 @@
     <header>
         <nav class="navbar navbar-expand-md main-menu fixed-top">
             <a href="/" class="navbar-brand">
-                <h1 class="site-title">Imc</h1>
+                <h1 class="site-title">Amlaen</h1>
             </a>
             <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"`
                     class="navbar-toggler">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -58,7 +58,7 @@
                     <div class="row footer-content">
                         <div class="col-sm-12 text-center">
                             <div class="copy-right">
-                                © Copyright 2019-2025. Imc.com. All right reserved.
+                                © Copyright 2019-2025. Amlaen.com. All right reserved.
                             </div>
                         </div>
                     </div>

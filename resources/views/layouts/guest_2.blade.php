@@ -17,6 +17,7 @@
 	@yield('content')
 </div>
 </body>
+@yield('scripts')
 <!-- Jquery Js -->
 <script src="{{ asset('assets/js/jquery.3.4.1.js')}}"></script>
 <!-- Custom Js -->

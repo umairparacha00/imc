@@ -9,7 +9,7 @@
 				<section id="about-banner">
 					<div class="container">
 						<div class="about-us text-center">
-							<h3>About Imc</h3>
+							<h3>About Amlaen</h3>
 							<div class="amw-a-spot-banner amw-a-spot-banner--left-align js-section-block">
 								<div class="amw-a-spot-banner__image-container">
 									<img class="xss-width-100 xss-display-none md-display-inline-block"
@@ -95,7 +95,7 @@
 		<div class="container-fluid p-0">
 			<div class="er-main">
 				<h1><i>TAKE YOUR EARNING TO THE NEXT LEVEL</i></h1>
-				<a href="register.html">SIGN UP NOW</a>
+				<a href="/register">SIGN UP NOW</a>
 			</div>
 		</div>
 	</section>

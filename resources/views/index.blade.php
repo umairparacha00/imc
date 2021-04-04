@@ -1,4 +1,7 @@
 @extends('layouts.guest')
+@section('meta')
+	<title>Amlaen Digital Marketing Agency</title>
+@endsection
 @section('content')
 	<main>
 		<div class="jumbotron mb-0 pb-0" style="background-color: #ffffff;">
