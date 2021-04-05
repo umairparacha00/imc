@@ -4,7 +4,9 @@
 
 	use App\Admin;
 	use App\Balance;
+	use App\Link;
 	use App\ModelHasRole;
+	use App\Orders;
 	use App\User;
 	use Illuminate\Contracts\Foundation\Application;
 	use Illuminate\Contracts\View\Factory;
@@ -34,22 +36,32 @@
 			return view('Admin.index', ['admins' => $admins]);
 		}
 
-		public function showDashboard(User $user, Balance $balance)
+		public function showDashboard(User $user, Balance $balance, Link $link, ModelHasRole $modelHasRole, Orders $orders)
 		{
 			$users = $user->usersForAdminDashboard();
+			$totalOrders = $orders->all()->count();
+			$totalUsers = $user->all()->count();
+			$totalYoutubeLinks = $link->where('link_type', 'Youtube')->count();
+			$totalInstagramLinks = $link->where('link_type', 'Instagram')->count();
+			$totalFacebookLinks = $link->where('link_type', 'Facebook')->count();
 			$totalMainBalance = $balance->totalMainBalance();
 			$totalGroupBalance = $balance->totalGroupBalance();
-			$partners = ModelHasRole::where('role_id', 3)->get()->count();
-			$seniorDirectors = ModelHasRole::where('role_id', 4)->get()->count();
-			$directors = ModelHasRole::where('role_id', 5)->get()->count();
-			$generalManagers = ModelHasRole::where('role_id', 6)->get()->count();
-			$seniorManagers = ModelHasRole::where('role_id', 7)->get()->count();
-			$managers = ModelHasRole::where('role_id', 8)->get()->count();
-			$seniorOfficers = ModelHasRole::where('role_id', 9)->get()->count();
-			$officers = ModelHasRole::where('role_id', 10)->get()->count();
+			$partners = $modelHasRole->where('role_id', 3)->count();
+			$seniorDirectors = $modelHasRole->where('role_id', 4)->count();
+			$directors = $modelHasRole->where('role_id', 5)->count();
+			$generalManagers = $modelHasRole->where('role_id', 6)->count();
+			$seniorManagers = $modelHasRole->where('role_id', 7)->count();
+			$managers = $modelHasRole->where('role_id', 8)->count();
+			$seniorOfficers = $modelHasRole->where('role_id', 9)->count();
+			$officers = $modelHasRole->where('role_id', 10)->count();
 			return view('Admin.dashboard', [
 					'users' => $users,
 					'totalMainBalance' => $totalMainBalance,
+					'totalOrders' => $totalOrders,
+					'totalUsers' => $totalUsers,
+					'totalFacebookLinks' => $totalFacebookLinks,
+					'totalInstagramLinks' => $totalInstagramLinks,
+					'totalYoutubeLinks' => $totalYoutubeLinks,
 					'totalGroupBalance' => $totalGroupBalance,
 					'partners' => $partners,
 					'seniorDirectors' => $seniorDirectors,

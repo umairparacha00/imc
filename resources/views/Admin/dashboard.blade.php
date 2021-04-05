@@ -5,6 +5,46 @@
 @endsection
 @section('style')
 	<style>
+        .search-box {
+            width: 300px;
+            background-color: #ffffff;
+            box-shadow: 0 0 8px #bfc4c9;
+            display: flex;
+            padding: 8px 12px 8px 12px;
+            align-items: center;
+            border-radius: 8px;
+        }
+        .search-dropdown{
+            position: absolute;
+            z-index: 99999;
+            background-color: #fff;
+            width: 300px;
+            margin-top: 10px;
+            box-shadow: 0 0 8px #bfc4c9;
+
+        }
+        .search-box > i{
+            font-size: 20px;
+            color: #bfc4c9;
+        }
+        .search-box > input{
+            flex: 1;
+            height: 20px;
+            outline: none;
+            border: none;
+            font-size: 18px;
+            color: #c5c9cd;
+            padding-left: 10px;
+        }
+        .page-item.active .page-link {
+            background-color: #FF9F43;
+            border-color: #FF9F43;
+            color: #ffffff !important;
+        }
+        .custom-page-digits>a,
+        .custom-page-item>a {
+            color: #9a9a9a !important;
+        }
         .text-primary {
             color: #7367F0 !important;
         }
@@ -181,9 +221,9 @@
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
-								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Direct Members
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Members
 								</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800"></div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalUsers }}</div>
 							</div>
 							<div class="col-auto">
 								<i class="fal fa-users fa-2x text-gray-300"></i>
@@ -197,13 +237,12 @@
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
-								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Indirect
-									Members
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Youtube Links
 								</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">2</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalYoutubeLinks }}</div>
 							</div>
 							<div class="col-auto">
-								<i class="fal fa-users fa-2x text-gray-300"></i>
+								<i class="fal fa-external-link-square fa-2x text-gray-300"></i>
 							</div>
 						</div>
 					</div>
@@ -214,13 +253,13 @@
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
-								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Videos I
-									watched
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+									Instagram Links
 								</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">475</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalInstagramLinks }}</div>
 							</div>
 							<div class="col-auto">
-								<i class="fa fa-film fa-2x text-gray-300"></i>
+								<i class="fal fa-external-link-square fa-2x text-gray-300"></i>
 							</div>
 						</div>
 					</div>
@@ -231,19 +270,37 @@
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
-								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Channels I
-									Subscribed
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Facebook Links
 								</div>
-								<div class="h5 mb-0 font-weight-bold text-gray-800">25</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalFacebookLinks }}</div>
 							</div>
 							<div class="col-auto">
-								<i class="fa fa-film fa-2x text-gray-300"></i>
+								<i class="fal fa-external-link-square fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Orders
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalOrders }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-shopping-basket fa-2x text-gray-300"></i>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			@endrole
+		</div>
+		<div class="row">
+			@livewire('admin.user-search')
 		</div>
 	</section>
 @endsection
