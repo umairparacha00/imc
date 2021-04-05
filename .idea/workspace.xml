@@ -5,23 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e5ed9b28-c5dd-4b0a-b34b-43dfb02ae33d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/ServicesController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/sitemap.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/services/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/services/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/services/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Admin/services/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/Admin/withdraws/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PurchaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ServicesController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/Admin/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/guest.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/guest_2.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/guest_2.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/WithdrawController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/WithdrawController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_03_25_073729_create_withdraws_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_03_25_073729_create_withdraws_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/withdraws/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/withdraws/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Admin/withdraws/pending.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Admin/withdraws/pending.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/transactions/withdraw-balance.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/transactions/withdraw-balance.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +190,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/Admin/withdraws" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -212,11 +202,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\imc\resources\views\Admin\withdraws" />
       <recent name="E:\imc\public" />
       <recent name="E:\imc\resources\views\Admin\services" />
       <recent name="E:\imc\app\Http\Controllers\Auth" />
       <recent name="E:\imc\resources\views\Admin\orders" />
-      <recent name="E:\imc\resources\views\Admin\withdraws" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\imc\resources\views" />
@@ -290,6 +280,7 @@
       <workItem from="1617428094167" duration="5066000" />
       <workItem from="1617468668350" duration="20879000" />
       <workItem from="1617602402901" duration="1975000" />
+      <workItem from="1617604842333" duration="6276000" />
     </task>
     <task id="LOCAL-00001" summary="first">
       <created>1614939594395</created>
@@ -347,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1617545111955</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="services CRUD added">
+      <created>1617606307676</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1617606307676</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -375,7 +373,8 @@
     <MESSAGE value="added" />
     <MESSAGE value="RegisterController.php added" />
     <MESSAGE value="Titles corrected" />
-    <option name="LAST_COMMIT_MESSAGE" value="Titles corrected" />
+    <MESSAGE value="services CRUD added" />
+    <option name="LAST_COMMIT_MESSAGE" value="services CRUD added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -424,6 +423,11 @@
           <url>file://$PROJECT_DIR$/resources/views/Admin/services/create.blade.php</url>
           <line>1</line>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/resources/views/Admin/withdraws/edit.blade.php</url>
+          <line>1</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

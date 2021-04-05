@@ -1,6 +1,6 @@
 @extends('layouts.guest_2')
 @section('meta-data')
-	<title>Login - Imc.com</title>
+	<title>Login - Amlaen.co</title>
 	<meta
 			name="description"
 			content="Imc is one of the top advertisers which provides numerous options to boots and enhance your Viewership and Branding."
@@ -15,7 +15,7 @@
 			<div class="row">
 				<div class="fuh_674_hjkf">
 					<div class="main-title">
-						<h1>Imc</h1>
+						<h1>Amlaen</h1>
 					</div>
 					<form autocomplete="off" method="POST" class="login-form" action="{{ '/admin/login' }}">
 						@csrf

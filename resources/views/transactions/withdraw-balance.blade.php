@@ -225,6 +225,7 @@
 									<tr>
 										<th>ID</th>
 										<th>Gateway</th>
+										<th>Account</th>
 										<th>Amount</th>
 										<th>Status</th>
 										<th>Date</th>
@@ -235,9 +236,10 @@
 										<tr>
 											<td>{{ $data->id }}</td>
 											<td>{{ $data->paymentGateway->name }}</td>
+											<td>{{ $data->paymentGateway->account_iban }}</td>
 											<td>{{ $data->amount }}</td>
 											<td>
-												<div class="badge
+												<div style="font-size: 14px" class="badge
 													@if ($data->status === 0)
 														badge-info
 													@elseif($data->status === 1)
@@ -247,7 +249,7 @@
 													@if ($data->status === 0)
 														pending
 													@elseif($data->status === 1)
-														Success
+														approved | TID: {{ $data->approved_transaction_id }}
 													@endif
 												</div>
 											</td>

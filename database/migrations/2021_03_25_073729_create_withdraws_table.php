@@ -23,6 +23,7 @@ class CreateWithdrawsTable extends Migration
 			$table->string('account_holder_name')->nullable();
 			$table->string('account_iban')->nullable();
 			$table->string('reference_number')->nullable();
+			$table->string('approved_transaction_id')->nullable();
 			$table->boolean('status')->default(0);
 			$table->timestamps();
         });

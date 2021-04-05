@@ -67,7 +67,7 @@
 												pending
 											@elseif($withdraw->status === 1)
 												Success
-												
+											
 											@elseif($withdraw->status === 2)
 												Suspended
 											@elseif($withdraw->status === 3)
@@ -77,12 +77,9 @@
 									</td>
 									<td class="text-center">
 										<div class="d-flex justify-content-around align-items-center">
-											<form action="{{ route('withdraws.approve', $withdraw->id) }}" method="POST">
-												@csrf
-												@method('PUT')
-												<button type="submit" class="btn btn-success"><i
-															class="fal fa-check"></i></button>
-											</form>
+											<a href="{{ route('withdraws.edit', $withdraw->id) }}"
+											   class="btn btn-success"><i
+														class="fal fa-check"></i></a>
 											<form action="{{ route('withdraws.reject', $withdraw->id) }}" method="POST">
 												@csrf
 												@method('PUT')

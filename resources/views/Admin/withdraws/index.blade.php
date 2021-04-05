@@ -64,7 +64,7 @@
 											@if ($withdraw->status === 0)
 												pending
 											@elseif($withdraw->status === 1)
-												Success
+												Success: {{ $withdraw->approved_transaction_id }}
 											
 											@elseif($withdraw->status === 2)
 												Suspended
