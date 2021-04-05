@@ -14,8 +14,12 @@
 	<link href="{{ asset('assets/css/all.min.css')}}" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Proza+Libre:ital,wght@1,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
-	<link href="{{ asset('assets/images/favicon-32x32.png')}}" rel="shortcut icon" type="image/x-icon"/>
-	<link href="{{ asset("assets/images/favicon-32x32.png")}}" rel="apple-touch-icon"/>
+	<link rel="shortcut icon" type="image/x-icon"/>
+	<link rel="apple-touch-icon"/>
+	
+	<link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/img/apple-touch-icon.png') }}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ asset('assets/img/favicon-16x16.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{ asset("assets/img/favicon-32x32.png")}}">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NXQKG34G8"></script>
 	<script>
