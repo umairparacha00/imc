@@ -132,13 +132,13 @@
 						@role('super-admin', 'admin')
 						<li>
 							<a href="{{ url('/admin/dashboard') }}"
-							   class="{{ Request::path() === 'admin/dashboard' ? 'mm-active' : '' }}">
+							   class="{{ request()->path() === 'admin/dashboard' ? 'mm-active' : '' }}">
 								<i class="metismenu-icon fal fa-tachometer-alt-average"></i>
 								Dashboard
 							</a>
 						</li>
 						@endrole
-						<li class="{{ Request::is('admin/resources*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('admin/resources*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-th-large"></i>
 								Resources
@@ -149,7 +149,7 @@
 								@role('super-admin', 'admin')
 								<li>
 									<a href="{{ route('admins.index') }}"
-									   class="mb-0 {{ Request::is('admin/resources/admins*') ? 'mm-active' : '' }}">
+									   class="mb-0 {{ request()->is('admin/resources/admins*') ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6">
 										</i>Admins
 									</a>
@@ -157,7 +157,7 @@
 								@endrole
 								<li>
 									<a href="{{ route('users.index') }}"
-									   class="mb-0 {{ Request::is('admin/resources/users*') ? 'mm-active' : '' }}">
+									   class="mb-0 {{ request()->is('admin/resources/users*') ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6">
 										</i>Users
 									</a>
@@ -167,12 +167,12 @@
 						@role('super-admin', 'admin')
 						<li>
 							<a href="{{ route('ranks.pending') }}"
-							   class="{{ Request::path() === 'admin/ranks/pending' ? 'mm-active' : '' }}">
+							   class="{{ request()->path() === 'admin/ranks/pending' ? 'mm-active' : '' }}">
 								<i class="metismenu-icon fal fa-user-circle"></i>
 								Ranks Pending
 							</a>
 						</li>
-						<li class="{{ Request::is('admin/memberships*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('admin/memberships*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-user-circle"></i>
 								MemberShips
@@ -181,44 +181,21 @@
 							<ul>
 								<li>
 									<a href="{{ route('memberships.index') }}"
-									   class="mb-0 {{ Request::is('admin/memberships') ? 'mm-active' : '' }}">
+									   class="mb-0 {{ request()->is('admin/memberships') ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6">
 										</i>Index
 									</a>
 								</li>
 								<li>
 									<a href="{{ route('memberships.pending') }}"
-									   class="mb-0 {{ Request::is('admin/memberships/pending') ? 'mm-active' : '' }}">
+									   class="mb-0 {{ request()->is('admin/memberships/pending') ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6">
 										</i>Pending
 									</a>
 								</li>
 							</ul>
 						</li>
-						<li class="{{ Request::is('admin/services*') ?  'mm-active' : '' }}">
-							<a href="#">
-								<i class="metismenu-icon fal fa-user-circle"></i>
-								Services
-								<i class="metismenu-state-icon fal fa-angle-right"></i>
-							</a>
-							<ul>
-								<li>
-									<a href="{{ route('services.index') }}"
-									   class="mb-0 {{ Request::is('admin/services') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Index
-									</a>
-								</li>
-								<li>
-									<a href="{{ route('services.create') }}"
-									   class="mb-0 {{ Request::is('admin/services/create') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Create
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="{{ Request::is('admin/withdraws*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('admin/withdraws*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-money-check-alt"></i>
 								Withdraws
@@ -227,145 +204,21 @@
 							<ul>
 								<li>
 									<a href="{{ route('withdraws.index') }}"
-									   class="mb-0 {{ Request::is('admin/withdraws') ? 'mm-active' : '' }}">
+									   class="mb-0 {{ request()->is('admin/withdraws') ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6">
 										</i>Index
 									</a>
 								</li>
 								<li>
 									<a href="{{ route('withdraws.pending') }}"
-									   class="mb-0 {{ Request::is('admin/withdraws/pending') ? 'mm-active' : '' }}">
+									   class="mb-0 {{ request()->is('admin/withdraws/pending') ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6">
 										</i>Pending
 									</a>
 								</li>
 							</ul>
 						</li>
-						<li class="{{ Request::is('admin/links*') ?  'mm-active' : '' }}">
-							<a href="#">
-								<i class="metismenu-icon fal fa-external-link-square"></i>
-								Links
-								<i class="metismenu-state-icon fal fa-angle-right"></i>
-							</a>
-							<ul>
-								<li>
-									<a href="{{ route('links.index') }}"
-									   class="mb-0 {{ Request::is('admin/links') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Index
-									</a>
-								</li>
-								<li>
-									<a href="{{ route('links.create') }}"
-									   class="mb-0 {{ Request::is('admin/links/create') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>create
-									</a>
-								</li>
-								<li>
-									<a href="{{ route('links.pending') }}"
-									   class="mb-0 {{ Request::is('admin/links/pending') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Pending
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="{{ Request::is('admin/orders*') ?  'mm-active' : '' }}">
-							<a href="#">
-								<i class="metismenu-icon fal fa-shopping-cart"></i>
-								Orders
-								<i class="metismenu-state-icon fal fa-angle-right"></i>
-							</a>
-							<ul>
-								<li>
-									<a href="{{ route('orders.index') }}"
-									   class="mb-0 {{ Request::is('admin/orders') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Index
-									</a>
-								</li>
-								<li>
-									<a href="{{ route('orders.pending') }}"
-									   class="mb-0 {{ Request::is('admin/orders/pending') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Pending
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="{{ Request::is('admin/payment-gateway*') ?  'mm-active' : '' }}">
-							<a href="#">
-								<i class="metismenu-icon fal fa-th-large"></i>
-								Gateways
-								<i class="metismenu-state-icon fal fa-angle-right"></i>
-							</a>
-							<ul>
-								<li>
-									<a href="{{ route('payment-gateways.index') }}"
-									   class="mb-0 {{ Request::is('admin/payment-gateways') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Index
-									</a>
-								</li>
-								<li>
-									<a href="{{ route('payment-gateways.create') }}"
-									   class="mb-0 {{ Request::is('admin/payment-gateways/create') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>create
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="{{ Request::is('admin/roles*') ?  'mm-active' : '' }}">
-							<a href="#">
-								<i class="metismenu-icon fal fa-user-tag"></i>
-								Roles
-								<i class="metismenu-state-icon fal fa-angle-right"></i>
-							</a>
-							<ul>
-								<li>
-									<a href="{{ route('roles.index') }}"
-									   class="mb-0 {{ Request::is('admin/roles*') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Index
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="{{ Request::is('admin/permissions*') ?  'mm-active' : '' }}">
-							<a href="#">
-								<i class="metismenu-icon fal fa-user-lock"></i>
-								Permissions
-								<i class="metismenu-state-icon fal fa-angle-right"></i>
-							</a>
-							<ul>
-								<li>
-									<a href="{{ route('permissions.index') }}"
-									   class="mb-0 {{ Request::is('admin/permissions*') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Index
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="{{ Request::is('admin/rates*') ?  'mm-active' : '' }}">
-							<a href="#">
-								<i class="metismenu-icon fal fa-tags"></i>
-								Rates
-								<i class="metismenu-state-icon fal fa-angle-right"></i>
-							</a>
-							<ul>
-								<li>
-									<a href="{{ route('rates.index') }}"
-									   class="mb-0 {{ Request::is('admin/rates*') ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6">
-										</i>Index
-									</a>
-								</li>
-							</ul>
-						</li>
-						<li class="@if(Request::is('admin/transactions')) mm-active @elseif(Request::is('admin/create-points')) mm-active @endif">
+						<li class="@if(request()->is('admin/transactions')) mm-active @elseif(request()->is('admin/create-points')) mm-active @endif">
 							<a href="#">
 								<i class="metismenu-icon fal fa-usd-circle"></i>
 								Transactions
@@ -374,20 +227,167 @@
 							<ul>
 								<li>
 									<a href="{{ url('/admin/transactions') }}"
-									   class="{{ Request::path() === 'admin/transactions' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'admin/transactions' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Transactions
 									</a>
 								</li>
 								<li>
 									<a href="{{ url('/admin/create-points')}}"
-									   class="{{ Request::path() === 'admin/create-points' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'admin/create-points' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Create Points
 									</a>
 								</li>
 							</ul>
 						</li>
 						@endrole
-						<li class="{{ Request::is('admin/settings*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('admin/services*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-user-circle"></i>
+								Services
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('services.index') }}"
+									   class="mb-0 {{ request()->is('admin/services') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('services.create') }}"
+									   class="mb-0 {{ request()->is('admin/services/create') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Create
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ request()->is('admin/links*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-external-link-square"></i>
+								Links
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('links.index') }}"
+									   class="mb-0 {{ request()->is('admin/links') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('links.create') }}"
+									   class="mb-0 {{ request()->is('admin/links/create') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>create
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('links.pending') }}"
+									   class="mb-0 {{ request()->is('admin/links/pending') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Pending
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ request()->is('admin/orders*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-shopping-cart"></i>
+								Orders
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('orders.index') }}"
+									   class="mb-0 {{ request()->is('admin/orders') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('orders.pending') }}"
+									   class="mb-0 {{ request()->is('admin/orders/pending') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Pending
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ request()->is('admin/payment-gateway*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-th-large"></i>
+								Gateways
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('payment-gateways.index') }}"
+									   class="mb-0 {{ request()->is('admin/payment-gateways') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('payment-gateways.create') }}"
+									   class="mb-0 {{ request()->is('admin/payment-gateways/create') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>create
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ request()->is('admin/roles*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-user-tag"></i>
+								Roles
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('roles.index') }}"
+									   class="mb-0 {{ request()->is('admin/roles*') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ request()->is('admin/permissions*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-user-lock"></i>
+								Permissions
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('permissions.index') }}"
+									   class="mb-0 {{ request()->is('admin/permissions*') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ request()->is('admin/rates*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-tags"></i>
+								Rates
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('rates.index') }}"
+									   class="mb-0 {{ request()->is('admin/rates*') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="{{ request()->is('admin/settings*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-cog"></i>Settings
 								<i class="metismenu-state-icon fal fa-angle-right"></i>
@@ -395,13 +395,13 @@
 							<ul>
 								<li>
 									<a href="/admin/settings/change-password"
-									   class="{{ Request::path() === 'admin/settings/change-password' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'admin/settings/change-password' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Change Password
 									</a>
 								</li>
 								<li>
 									<a href="/admin/settings/change-pin"
-									   class="{{ Request::path() === 'admin/settings/change-pin' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'admin/settings/change-pin' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Change Pin
 									</a>
 								</li>
@@ -409,7 +409,7 @@
 						</li>
 						<li>
 							<a href="{{ route('admins.logout') }}"
-							   class="{{ Request::path() === 'admin/logout' ? 'mm-active' : '' }}"
+							   class="{{ request()->path() === 'admin/logout' ? 'mm-active' : '' }}"
 							   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 								<i class="metismenu-icon fal fa-power-off"></i>Logout
 							</a>

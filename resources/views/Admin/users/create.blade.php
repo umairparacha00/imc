@@ -130,18 +130,6 @@
 														<div class="help-block"></div>
 													</div>
 												</div>
-												<div class="form-group">
-													<div class="forms-control">
-														<label>Personal Pin</label>
-														<input type="text"
-															   name="pl_pin"
-															   placeholder="Personal Pin"
-															   required class="form-control"
-														/>
-														<div class="help-block"></div>
-													</div>
-												</div>
-											
 											</div>
 											<div class="col-12 col-sm-6">
 												<div class="form-group">

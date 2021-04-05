@@ -158,12 +158,12 @@
 					<ul class="vertical-nav-menu">
 						<li>
 							<a href="{{ url('/dashboard') }}"
-							   class="{{ Request::path() === 'dashboard' ? 'mm-active' : '' }}">
+							   class="{{ request()->path() === 'dashboard' ? 'mm-active' : '' }}">
 								<i class="metismenu-icon fal fa-tachometer-alt-average"></i>
 								Dashboard
 							</a>
 						</li>
-						<li class="{{ Request::is('youtube*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('youtube*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fab fa-youtube"></i>
 								Youtube
@@ -172,14 +172,14 @@
 							<ul>
 								<li>
 									<a href="{{ route('youtube.channels.index') }}"
-									   class="{{ Request::is('youtube/channels*')  ? 'mm-active' : '' }}">
+									   class="{{ request()->is('youtube/channels*')  ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>
 										Channel Links
 									</a>
 								</li>
 							</ul>
 						</li>
-						<li class="{{ Request::is('instagram*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('instagram*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fab fa-instagram"></i>
 								Instagram
@@ -188,14 +188,14 @@
 							<ul>
 								<li>
 									<a href="{{ route('instagram.profiles.index') }}"
-									   class="{{ Request::path() === 'instagram/profiles' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'instagram/profiles' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>
 										Profile Links
 									</a>
 								</li>
 							</ul>
 						</li>
-						<li class="{{ Request::is('facebook*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('facebook*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fab fa-facebook"></i>
 								Facebook
@@ -204,14 +204,14 @@
 							<ul>
 								<li>
 									<a href="{{ route('facebook.pages.index') }}"
-									   class="{{ Request::path() === 'facebook/pages' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'facebook/pages' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>
 										Page Links
 									</a>
 								</li>
 							</ul>
 						</li>
-						<li class="@if (Request::is('transactions') || Request::is('withdraw'))
+						<li class="@if (request()->is('transactions') || request()->is('withdraw'))
 								mm-active
 								@else
 						
@@ -225,19 +225,19 @@
 							<ul>
 								<li>
 									<a href="{{ url('/transactions') }}"
-									   class="{{ Request::path() === 'transactions' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'transactions' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Transactions
 									</a>
 								</li>
 								<li>
 									<a href="{{ url('/withdraw')}}"
-									   class="{{ Request::path() === 'withdraw' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'withdraw' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Withdraw
 									</a>
 								</li>
 							</ul>
 						</li>
-						<li class="{{ Request::is('network*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('network*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-users"></i>
 								Network
@@ -246,25 +246,25 @@
 							<ul>
 								<li>
 									<a href="{{url('/network/direct-referrals')}}"
-									   class="{{ Request::path() === 'network/direct-referrals' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'network/direct-referrals' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Direct Referrals
 									</a>
 								</li>
 								<li>
 									<a href="{{url('/network/tree')}}"
-									   class="{{ Request::path() === 'network/tree' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'network/tree' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Network Tree
 									</a>
 								</li>
 								<li>
 									<a href="{{('/network/referral-link')}}"
-									   class="mb-0 {{ Request::path() === 'network/referral-link' ? 'mm-active' : '' }}">
+									   class="mb-0 {{ request()->path() === 'network/referral-link' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Referral Link
 									</a>
 								</li>
 							</ul>
 						</li>
-						<li class="{{ Request::is('purchase*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('purchase*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-shopping-basket"></i>
 								Purchase
@@ -273,14 +273,14 @@
 							<ul>
 								<li>
 									<a href="{{ route('membership.create') }}"
-									   class="mb-0 {{ Request::path() === 'purchase/membership' ? 'mm-active' : '' }}">
+									   class="mb-0 {{ request()->path() === 'purchase/membership' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6">
 										</i>Membership
 									</a>
 								</li>
 								<li>
 									<a href="{{ route('purchase.services.create') }}"
-									   class="mb-0 {{ Request::path() === 'purchase/services' ? 'mm-active' : '' }}">
+									   class="mb-0 {{ request()->path() === 'purchase/services' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6">
 										</i>Services
 									</a>
@@ -290,12 +290,12 @@
 						
 						<li>
 							<a href="{{ url('/profile') }}"
-							   class="{{ Request::path() === 'profile' ? 'mm-active' : '' }}">
+							   class="{{ request()->path() === 'profile' ? 'mm-active' : '' }}">
 								<i class="metismenu-icon fal fa-address-card"></i>
 								Profile
 							</a>
 						</li>
-						<li class="{{ Request::is('settings*') ?  'mm-active' : '' }}">
+						<li class="{{ request()->is('settings*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-cog"></i>Settings
 								<i class="metismenu-state-icon fal fa-angle-right"></i>
@@ -303,7 +303,7 @@
 							<ul>
 								<li>
 									<a href="/settings/change-password"
-									   class="{{ Request::path() === 'settings/change-password' ? 'mm-active' : '' }}">
+									   class="{{ request()->path() === 'settings/change-password' ? 'mm-active' : '' }}">
 										<i class="fal fa-circle mr-3 fx-6"></i>Change Password
 									</a>
 								</li>
@@ -311,7 +311,7 @@
 						</li>
 						<li>
 							<a href="{{ route('logout') }}"
-							   class="{{ Request::path() === 'logout' ? 'mm-active' : '' }}"
+							   class="{{ request()->path() === 'logout' ? 'mm-active' : '' }}"
 							   onclick="event.preventDefault();document.getElementById('logout-form').submit();">
 								<i class="metismenu-icon fal fa-power-off"></i>Logout
 							</a>
