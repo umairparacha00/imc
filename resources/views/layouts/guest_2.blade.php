@@ -5,6 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<!-- Bootstrap Css File -->
 	<link rel="stylesheet" href="{{ asset('assets/css/main.css')}}" />
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NXQKG34G8"></script>
+	<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3NXQKG34G8');
+	</script>
 	@yield('meta-data')
 </head>
 

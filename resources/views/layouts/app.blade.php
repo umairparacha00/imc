@@ -16,6 +16,15 @@
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
 	<link href="{{ asset('assets/images/favicon-32x32.png')}}" rel="shortcut icon" type="image/x-icon"/>
 	<link href="{{ asset("assets/images/favicon-32x32.png")}}" rel="apple-touch-icon"/>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-3NXQKG34G8"></script>
+	<script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-3NXQKG34G8');
+	</script>
 	@yield('style')
 	@livewireStyles
 </head>
@@ -226,7 +235,7 @@
 						</li>
 						<li class="{{ Request::is('network*') ?  'mm-active' : '' }}">
 							<a href="#">
-								<i class="metismenu-icon fal fa-network-wired"></i>
+								<i class="metismenu-icon fal fa-users"></i>
 								Network
 								<i class="metismenu-state-icon fal fa-angle-right"></i>
 							</a>

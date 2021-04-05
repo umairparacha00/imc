@@ -13,6 +13,15 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css')}}" />
     <!-- Slick Css -->
     <link rel="stylesheet" href="{{ asset('assets/slick/slick.css')}}" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3NXQKG34G8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        
+        gtag('config', 'G-3NXQKG34G8');
+    </script>
     @yield('style')
 </head>
 

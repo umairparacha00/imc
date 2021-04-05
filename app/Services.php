@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Services extends Model
 {
+	protected $guarded = [];
 	public function orders(): HasMany
 	{
 		return $this->hasMany(Orders::class);

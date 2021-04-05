@@ -52,7 +52,7 @@
 				Route::put('{pending_memberships}/reject', 'UserMembershipController@reject')->name('memberships.reject');
 			});
 			Route::resource('memberships', 'MembershipController');
-
+			Route::resource('services', 'ServicesController');
 			Route::prefix('orders')->group(function () {
 				Route::get('pending', 'OrdersController@pending')->name('orders.pending');
 				Route::put('{order}/approve', 'OrdersController@approve')->name('orders.approve');
@@ -86,6 +86,7 @@
 				});
 				Route::resource('withdraws', 'WithdrawController');
 				Route::post('/getRateDetailsForDestroying', 'RatesController@getRateDetailsForDestroying');
+				Route::post('/getServiceDetailsForDestroying', 'ServicesController@getServiceDetailsForDestroying');
 				Route::post('/getGatewayDetailsForDestroying', 'RatesController@getGatewayDetailsForDestroying');
 				Route::post('/getRoleDetailsForDestroying', 'RolesController@getRoleDetailsForDestroying');
 				Route::post('/getPermissionDetailsForDestroying', 'PermissionsController@getPermissionDetailsForDestroying');

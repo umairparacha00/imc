@@ -194,6 +194,29 @@
 								</li>
 							</ul>
 						</li>
+						<li class="{{ Request::is('admin/services*') ?  'mm-active' : '' }}">
+							<a href="#">
+								<i class="metismenu-icon fal fa-user-circle"></i>
+								Services
+								<i class="metismenu-state-icon fal fa-angle-right"></i>
+							</a>
+							<ul>
+								<li>
+									<a href="{{ route('services.index') }}"
+									   class="mb-0 {{ Request::is('admin/services') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Index
+									</a>
+								</li>
+								<li>
+									<a href="{{ route('services.create') }}"
+									   class="mb-0 {{ Request::is('admin/services/create') ? 'mm-active' : '' }}">
+										<i class="fal fa-circle mr-3 fx-6">
+										</i>Create
+									</a>
+								</li>
+							</ul>
+						</li>
 						<li class="{{ Request::is('admin/withdraws*') ?  'mm-active' : '' }}">
 							<a href="#">
 								<i class="metismenu-icon fal fa-money-check-alt"></i>
