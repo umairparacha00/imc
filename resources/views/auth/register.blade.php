@@ -59,7 +59,7 @@
                                        id="sponsor"
                                        name="sponsor"
                                        placeholder="Your Sponsor Id"
-                                       value="@if ($sponsor){{ $sponsor }}@else{{ old('sponsor') }}@endif"
+                                       value="@if ($sponsor){{ $sponsor }}@else{{ 6008644428644576 }}@endif"
                                        required class="form-control"/>
                             </div>
                             <div class="form-group col-xl-6 col-lg-6 col-md-6 password">
