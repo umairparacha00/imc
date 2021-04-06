@@ -42,7 +42,7 @@
 			$users = $user->usersForAdminDashboard();
 			$totalOrders = $orders->all()->count();
 			$totalUsers = $user->all()->count();
-			$todaysUsers = $user->whereDate('created_at', '<' , today())->count();
+			$todaysUsers = $user->whereDate('created_at', '>' , today())->count();
 			$pendingMemberships = $pendingMembership->where('status', 0)->count();
 			$totalYoutubeLinks = $link->where('link_type', 'Youtube')->count();
 			$totalInstagramLinks = $link->where('link_type', 'Instagram')->count();
