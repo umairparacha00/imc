@@ -120,18 +120,6 @@
 					<div class="row main">
 						<div class="col-lg-4">
 							<div class="profile-inner column-name">
-								<h6>Account ID</h6>
-							</div>
-						</div>
-						<div class="col-lg-8">
-							<div class="profile-inner column-data">
-								<h6>{{ $admin->account_id }}</h6>
-							</div>
-						</div>
-					</div>
-					<div class="row main">
-						<div class="col-lg-4">
-							<div class="profile-inner column-name">
 								<h6>User Name</h6>
 							</div>
 						</div>
@@ -194,18 +182,6 @@
 										Blocked
 									@endif
 								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row main">
-						<div class="col-lg-4">
-							<div class="profile-inner column-name">
-								<h6>Personal Pin</h6>
-							</div>
-						</div>
-						<div class="col-lg-8">
-							<div class="profile-inner column-data">
-								<h6>{{ $admin->pl_pin }}</h6>
 							</div>
 						</div>
 					</div>

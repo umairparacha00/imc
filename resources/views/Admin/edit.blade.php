@@ -44,7 +44,6 @@
             font-size: 38px;
             padding: 16px 0 15px;
             position: relative;
-            font-family: Lato-Bold, sans-serif;
         }
 
         .new-form-container h1:after {
@@ -221,18 +220,6 @@
 													<option value="2"@if ($admin->status === 2) selected @endif>Suspended</option>
 													<option value="3"@if ($admin->status === 3) selected @endif>Banned</option>
 												</select>
-												<div class="help-block"></div>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="forms-control">
-												<label>Personal Pin</label>
-												<input type="text"
-													   class="form-control @error('pl_pin') is-invalid @enderror"
-													   name="pl_pin"
-													   placeholder="Personal Pin"
-													   value="@if($admin->pl_pin !== null){{ $admin->pl_pin }}@else{{ old('pl_pin') }} @endif"
-												>
 												<div class="help-block"></div>
 											</div>
 										</div>
