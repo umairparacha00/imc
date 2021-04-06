@@ -75,7 +75,7 @@
 				'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
 				'sponsor' => ['required', 'numeric', 'exists:users,account_id'],
 				'password' => ['required', 'string', 'min:8', 'confirmed'],
-//				'g-recaptcha-response' => 'required|captcha',
+                'g-recaptcha-response' => 'required|captcha',
 			], $message);
 		}
 
