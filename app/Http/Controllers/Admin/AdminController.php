@@ -7,6 +7,7 @@
 	use App\Link;
 	use App\ModelHasRole;
 	use App\Orders;
+	use App\PendingMembership;
 	use App\User;
 	use Illuminate\Contracts\Foundation\Application;
 	use Illuminate\Contracts\View\Factory;
@@ -36,11 +37,12 @@
 			return view('Admin.index', ['admins' => $admins]);
 		}
 
-		public function showDashboard(User $user, Balance $balance, Link $link, ModelHasRole $modelHasRole, Orders $orders)
+		public function showDashboard(User $user, Balance $balance, Link $link, ModelHasRole $modelHasRole, Orders $orders, PendingMembership $pendingMembership)
 		{
 			$users = $user->usersForAdminDashboard();
 			$totalOrders = $orders->all()->count();
 			$totalUsers = $user->all()->count();
+			$pendingMemberships = $pendingMembership->where('status', 0)->count();
 			$totalYoutubeLinks = $link->where('link_type', 'Youtube')->count();
 			$totalInstagramLinks = $link->where('link_type', 'Instagram')->count();
 			$totalFacebookLinks = $link->where('link_type', 'Facebook')->count();
@@ -57,6 +59,7 @@
 			return view('Admin.dashboard', [
 					'users' => $users,
 					'totalMainBalance' => $totalMainBalance,
+					'pendingMemberships' => $pendingMemberships,
 					'totalOrders' => $totalOrders,
 					'totalUsers' => $totalUsers,
 					'totalFacebookLinks' => $totalFacebookLinks,
