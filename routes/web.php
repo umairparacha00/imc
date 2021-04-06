@@ -24,7 +24,7 @@
 		Route::get('/admin/login', 'Admin\AdminController@showLoginForm');
 	});
 
-	Auth::routes(['verify' => true]);
+	Auth::routes();
 	Route::prefix('admin')->namespace('Admin')->group(function () {
 		Route::post('/login', 'AdminController@login');
 		Route::middleware('admin')->group(function () {
@@ -109,7 +109,7 @@
 			})->where('query', '.*');
 		});
 	});
-	Route::middleware(['auth', 'verified'])->group(function () {
+	Route::middleware(['auth'])->group(function () {
 		Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 		Route::get('/profile', 'ProfileController@edit')->name('profile');
 		Route::patch('/profile/{user}', 'ProfileController@update');

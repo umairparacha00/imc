@@ -94,6 +94,7 @@
 				'email' => $data['email'],
 				'sponsor' => $data['sponsor'],
 				'password' => Hash::make($data['password']),
+				'status' => 1,
 			]);
 			Balance::create([
 				'user_id' => $user->id,
