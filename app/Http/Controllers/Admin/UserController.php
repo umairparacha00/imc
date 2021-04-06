@@ -157,7 +157,7 @@
 			}
 			$data['password'] = $user->password;
 			if ($request->password !== null) {
-				$data['password'] = $validData['password'];
+				$data['password'] = Hash::make($validData['password']);
 			}
 			if ($request->status !== null) {
 				$data['status'] = $validData['status'];

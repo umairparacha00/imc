@@ -89,10 +89,10 @@
                         <div class="col">
                             <div class="row">
                                 <div class="form-group col-sm-4 col-lg-4 col-xl-4">
-                                    <label for="personal_pin">
-                                        Enter Personal Pin
+                                    <label for="current_password">
+                                        Enter Current Password
                                     </label>
-                                    <input id="personal_pin" name="personal_pin" placeholder="Enter Personal Pin" type="password" class="form-control">
+                                    <input id="current_password" name="current_password" placeholder="Enter Current Password" type="password" class="form-control">
                                 </div>
                                 <div class="form-group col-sm-4 col-lg-4 col-xl-4">
                                     <label for="password">

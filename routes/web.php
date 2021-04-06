@@ -102,9 +102,7 @@
 				Route::post('/create-points', 'TransactionsController@createPoints')->name('create-points.post');
 			});
 			Route::get('/settings/change-password', 'SettingsController@showChangePassword');
-			Route::get('/settings/change-pin', 'SettingsController@showChangePin');
 			Route::post('/change-password', 'SettingsController@changePassword')->name('admin.change-password.post');
-			Route::post('/change-pin', 'SettingsController@changePin');
 			Route::post('/logout', 'AdminController@logout')->name('admins.logout');
 			Route::any('{query}', function () {
 				return redirect('/admin/dashboard');

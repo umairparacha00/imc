@@ -399,12 +399,6 @@
 										<i class="fal fa-circle mr-3 fx-6"></i>Change Password
 									</a>
 								</li>
-								<li>
-									<a href="/admin/settings/change-pin"
-									   class="{{ request()->path() === 'admin/settings/change-pin' ? 'mm-active' : '' }}">
-										<i class="fal fa-circle mr-3 fx-6"></i>Change Pin
-									</a>
-								</li>
 							</ul>
 						</li>
 						<li>

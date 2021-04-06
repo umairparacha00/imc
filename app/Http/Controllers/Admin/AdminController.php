@@ -213,7 +213,9 @@
 			}
 
 			$data['password'] = $admin->password;
-
+			if ($request->password !== null) {
+				$data['password'] = Hash::make($validData['password']);
+			}
 			$admin->update($data);
 			return redirect(route('admins.index'))->withToastSuccess('Admin Updated Successfully!');
 		}

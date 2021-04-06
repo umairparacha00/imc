@@ -3,9 +3,11 @@
 	namespace App\Http\Controllers;
 
 	use App\User;
+	use Illuminate\Http\RedirectResponse;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Hash;
 	use Illuminate\Support\Facades\Validator;
+	use Illuminate\Validation\ValidationException;
 
 	class SettingsController extends Controller
 	{
@@ -14,7 +16,13 @@
 			return view('setting.change-password');
 		}
 
-		public function changePassword(Request $request, User $user)
+		/**
+		 * @param Request $request
+		 * @param User $user
+		 * @return RedirectResponse
+		 * @throws ValidationException
+		 */
+		public function changePassword(Request $request, User $user): RedirectResponse
 		{
 
 			$data = $this->validator($request->all())->validate();
@@ -26,10 +34,14 @@
 			}
 		}
 
-		protected function validator(array $data)
+		/**
+		 * @param array $data
+		 * @return \Illuminate\Contracts\Validation\Validator
+		 */
+		protected function validator(array $data): \Illuminate\Contracts\Validation\Validator
 		{
 			$rules = [
-				'current_password' => 'required|numeric',
+				'current_password' => 'required|string',
 				'password' => 'required|string|min:8|confirmed'
 			];
 			$message = [
