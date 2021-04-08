@@ -48,17 +48,15 @@
 									<td class="text-center">{{ $pendingMembership->transaction_id }}</td>
 									<td class="text-center">
 										<div class="d-flex justify-content-around align-items-center">
-											<form action="{{ route('memberships.approve', $pendingMembership->id) }}" method="POST">
+											<form action="{{ route('memberships.approve', $pendingMembership->id) }}"
+												  method="POST">
 												@csrf
 												@method('PUT')
-												<button type="submit" class="btn btn-success"><i class="fal fa-check"></i></button>
+												<button type="submit" class="btn btn-success"><i
+															class="fal fa-check"></i></button>
 											</form>
-											<form action="{{ route('memberships.approve', $pendingMembership->id) }}" method="POST">
-												@csrf
-												@method('PUT')
-												<button type="submit" class="btn btn-danger"><i class="fal fa-times"></i></button>
-											</form>
-										
+											<a href="{{ route('memberships.rejection', $pendingMembership->id) }}" class="btn btn-danger"><i class="fal fa-times"></i>
+											</a>
 										</div>
 									</td>
 								</tr>

@@ -14,10 +14,11 @@
 	class MembershipController extends Controller
 	{
 
-		public function create(Membership $membership)
+		public function create(Membership $membership, PendingMembership $pendingMembership)
 		{
 			$memberships = $membership->all();
-			return view('purchase.membership', ['memberships' => $memberships]);
+			$pendingMemberships = $pendingMembership->where('user_id', current_user()->id)->get();
+			return view('purchase.membership', ['memberships' => $memberships, 'pendingMemberships' => $pendingMemberships]);
 		}
 
 		public function store(Request $request, PendingMembership $PendingMembership)

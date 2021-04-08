@@ -49,6 +49,7 @@
 			Route::prefix('memberships')->group(function () {
 				Route::get('pending', 'UserMembershipController@indexPending')->name('memberships.pending');
 				Route::put('{pending_memberships}/approve', 'UserMembershipController@approve')->name('memberships.approve');
+				Route::get('{pending_memberships}/edit', 'UserMembershipController@rejection')->name('memberships.rejection');
 				Route::put('{pending_memberships}/reject', 'UserMembershipController@reject')->name('memberships.reject');
 			});
 			Route::resource('memberships', 'MembershipController');

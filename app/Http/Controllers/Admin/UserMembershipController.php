@@ -22,76 +22,9 @@
 		 */
 		public function indexPending(): View
 		{
-			$pendingMemberships = PendingMembership::where('status', 0)->get();
+			$pendingMemberships = PendingMembership::where('status', 0)->paginate(10);
 			return view('Admin.memberships.pending', compact('pendingMemberships'));
 		}
-
-		/**
-		 * Show the form for creating a new resource.
-		 *
-		 * @return Response
-		 */
-		public function create()
-		{
-			//
-		}
-
-		/**
-		 * Store a newly created resource in storage.
-		 *
-		 * @param Request $request
-		 * @return Response
-		 */
-		public function store(Request $request)
-		{
-			//
-		}
-
-		/**
-		 * Display the specified resource.
-		 *
-		 * @param int $id
-		 * @return Response
-		 */
-		public function show($id)
-		{
-			//
-		}
-
-		/**
-		 * Show the form for editing the specified resource.
-		 *
-		 * @param int $id
-		 * @return Response
-		 */
-		public function edit($id)
-		{
-			//
-		}
-
-		/**
-		 * Update the specified resource in storage.
-		 *
-		 * @param Request $request
-		 * @param int $id
-		 * @return Response
-		 */
-		public function update(Request $request, $id)
-		{
-			//
-		}
-
-		/**
-		 * Remove the specified resource from storage.
-		 *
-		 * @param int $id
-		 * @return Response
-		 */
-		public function destroy($id)
-		{
-			//
-		}
-
 		public function approve($id)
 		{
 			DB::transaction(function () use ($id) {
@@ -111,11 +44,23 @@
 			return back()->withToastSuccess('Membership approved successfully!');
 		}
 
-		public function reject($id)
+		public function rejection($id)
+		{
+			$pendingMembership = PendingMembership::where('id', $id)->first('id');
+			return view('Admin.memberships.rejection', compact('pendingMembership'));
+		}
+
+		public function reject($id, Request $request)
 		{
 			$pendingMembership = PendingMembership::where('id', $id)->first();
+			$pendingMembership->update(
+				[
+					'status' => 2,
+					'rejectionReason' => $request->rejectionReason
+				]
+			);
 			$user = User::findOrFail($pendingMembership->user_id);
 			$user->update(['purchasing_status' => 'can']);
-			return back()->withToastSuccess('Document rejected successfully!');
+			return redirect(route('memberships.pending'))->withToastSuccess('Membership rejected successfully!');
 		}
 	}

@@ -248,6 +248,11 @@
 						</a>
 					</li>
 					<li class="nav-item">
+						<a href="#history" role="tab" data-toggle="tab" class="nav-link">
+							<i class="fal fa-history mr-2"></i> History
+						</a>
+					</li>
+					<li class="nav-item">
 						<a href="#help" role="tab" data-toggle="tab" class="nav-link">
 							<i class="fal fa-info-circle mr-2"></i> Help
 						</a>
@@ -282,7 +287,8 @@
 										<label for="memberships">
 											Memberships
 										</label>
-										<select class="custom-select @error('name') is-invalid @enderror" name="name" id="name">
+										<select class="custom-select @error('name') is-invalid @enderror" name="name"
+												id="name">
 											<option selected disabled>-- Select Membership --</option>
 											@foreach ($memberships as $membership)
 												@if (current_user()->membershipId->status == 0)
@@ -308,7 +314,9 @@
 										<label>
 											Transaction Id
 										</label>
-										<input type="text" class="form-control @error('transaction_id') is-invalid @enderror" name="transaction_id"
+										<input type="text"
+											   class="form-control @error('transaction_id') is-invalid @enderror"
+											   name="transaction_id"
 											   id="transaction_id">
 									</div>
 								</div>
@@ -331,6 +339,53 @@
 							</div>
 						
 						</form>
+					</div>
+					<div role="tabpanel" id="history" class="tab-pane fade">
+						<div role="tabpanel" id="history" class="tab-pane fade active show">
+							<div class="table-responsive">
+								<table class="align-middle mb-0 table table-striped table-hover">
+									<thead>
+									<tr>
+										<th>ID</th>
+										<th>Membership Name</th>
+										<th>Gateway</th>
+										<th>Account</th>
+										<th>Amount</th>
+										<th>Status</th>
+										<th>Rejection Reason</th>
+										<th>Date</th>
+									</tr>
+									</thead>
+									<tbody>
+									@foreach ($pendingMemberships as $data)
+										<tr>
+											<td>{{ $data->id }}</td>
+											<td>{{ $data->membership->name }}</td>
+											<td>{{ $data->paymentGateway->name }}</td>
+											<td>{{ $data->paymentGateway->account_iban }}</td>
+											<td>{{ $data->transaction_amount }}</td>
+											<td>
+												<div style="font-size: 14px" class="badge
+													@if ($data->status === 0)
+														badge-info
+@elseif($data->status === 1)badge-success
+@elseif($data->status === 2)badge-danger
+@endif"
+												>
+													@if ($data->status === 0)pending
+													@elseif($data->status === 1)approved
+													@elseif($data->status === 2)Rejected
+													@endif
+												</div>
+											</td>
+											<td>{{ $data->rejectionReason }}</td>
+											<td>{{ Carbon\Carbon::parse($data->created_at)->format('d M Y') }}</td>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
+							</div>
+						</div>
 					</div>
 					<div role="tabpanel" id="help" class="tab-pane fade">
 						<div class="row">
@@ -408,10 +463,10 @@
                 axios.post('/getMembershipPrice', {
                     "name": $("#name").val(),
                     "transaction_id": $("#transaction_id").val(),
-					"payment_gateway_id": $("#payment_gateway_id").val()
+                    "payment_gateway_id": $("#payment_gateway_id").val()
                 }).then(function (response) {
                     Swal.fire({
-						title: 'Confirm Purchase',
+                        title: 'Confirm Purchase',
                         text: 'Are you sure you want to proceed to update to ' + response.data.name + '. its prices is (' + response.data.price + ')?',
                         position: "top",
                         showCancelButton: true,
