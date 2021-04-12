@@ -5,10 +5,10 @@
 	use App\Admin;
 	use App\Balance;
 	use App\Link;
-	use App\ModelHasRole;
 	use App\Orders;
 	use App\PendingMembership;
 	use App\User;
+	use App\UserMembership;
 	use App\Withdraw;
 	use Illuminate\Contracts\Foundation\Application;
 	use Illuminate\Contracts\View\Factory;
@@ -38,12 +38,12 @@
 			return view('Admin.index', ['admins' => $admins]);
 		}
 
-		public function showDashboard(User $user, Balance $balance, Link $link, ModelHasRole $modelHasRole, Orders $orders, PendingMembership $pendingMembership, withdraw $withdraw)
+		public function showDashboard(User $user, Balance $balance, Link $link, Orders $orders, PendingMembership $pendingMembership, withdraw $withdraw)
 		{
 			$users = $user->usersForAdminDashboard();
 			$totalOrders = $orders->all()->count();
 			$totalUsers = $user->all()->count();
-			$todaysUsers = $user->whereDate('created_at', '=' , today())->count();
+			$todaysUsers = $user->whereDate('created_at', '=', today())->count();
 			$pendingMemberships = $pendingMembership->where('status', 0)->count();
 			$pendingWithdraws = $withdraw->where('status', 0)->count();
 			$totalYoutubeLinks = $link->where('link_type', 'Youtube')->count();
@@ -51,14 +51,11 @@
 			$totalFacebookLinks = $link->where('link_type', 'Facebook')->count();
 			$totalMainBalance = $balance->totalMainBalance();
 			$totalGroupBalance = $balance->totalGroupBalance();
-			$partners = $modelHasRole->where('role_id', 3)->count();
-			$seniorDirectors = $modelHasRole->where('role_id', 4)->count();
-			$directors = $modelHasRole->where('role_id', 5)->count();
-			$generalManagers = $modelHasRole->where('role_id', 6)->count();
-			$seniorManagers = $modelHasRole->where('role_id', 7)->count();
-			$managers = $modelHasRole->where('role_id', 8)->count();
-			$seniorOfficers = $modelHasRole->where('role_id', 9)->count();
-			$officers = $modelHasRole->where('role_id', 10)->count();
+			$starterMemberships = UserMembership::where('membership_id', 1)->count();
+			$joiningMemberships = UserMembership::where('membership_id', 2)->count();
+			$basicMemberships = UserMembership::where('membership_id', 3)->count();
+			$silverMemberships = UserMembership::where('membership_id', 4)->count();
+			$goldMemberships = UserMembership::where('membership_id', 5)->count();
 			return view('Admin.dashboard', [
 					'users' => $users,
 					'totalMainBalance' => $totalMainBalance,
@@ -71,14 +68,11 @@
 					'totalInstagramLinks' => $totalInstagramLinks,
 					'totalYoutubeLinks' => $totalYoutubeLinks,
 					'totalGroupBalance' => $totalGroupBalance,
-					'partners' => $partners,
-					'seniorDirectors' => $seniorDirectors,
-					'directors' => $directors,
-					'generalManagers' => $generalManagers,
-					'seniorManagers' => $seniorManagers,
-					'managers' => $managers,
-					'seniorOfficers' => $seniorOfficers,
-					'officers' => $officers
+					'starterMemberships' => $starterMemberships,
+					'joiningMemberships' => $joiningMemberships,
+					'basicMemberships' => $basicMemberships,
+					'silverMemberships' => $silverMemberships,
+					'goldMemberships' => $goldMemberships,
 				]
 			);
 		}

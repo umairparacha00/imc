@@ -318,6 +318,86 @@
 					<div class="card-body">
 						<div class="row no-gutters align-items-center">
 							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Starter Memberships
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $starterMemberships }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-shopping-basket fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Joining Memberships
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $joiningMemberships }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-shopping-basket fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Basic Memberships
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $basicMemberships }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-shopping-basket fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Silver Memberships
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $silverMemberships }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-shopping-basket fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Gold Memberships
+								</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $goldMemberships }}</div>
+							</div>
+							<div class="col-auto">
+								<i class="fal fa-shopping-basket fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-4 col-md-6">
+				<div class="card border-left-primary shadow py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
 								<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pending Memberships
 								</div>
 								<div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pendingMemberships }}</div>
