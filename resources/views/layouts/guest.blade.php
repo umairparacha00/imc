@@ -25,6 +25,7 @@
         
         gtag('config', 'G-3NXQKG34G8');
     </script>
+    <script data-ad-client="ca-pub-1021925910806846" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     @yield('style')
 </head>
 
@@ -63,6 +64,17 @@
         </nav>
     </header>
     @yield('content')
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- homepage -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-1021925910806846"
+         data-ad-slot="9410719802"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
     <footer class="footer footer-wrap">
         <div class="container">
             <div class="footer">
